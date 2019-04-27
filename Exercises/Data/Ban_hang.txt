@@ -1,0 +1,18 @@
+Gao01 Gao nang huong 40 15000
+Gao02 Gao thom Thai 32 14000
+Gao03 Gao lut An Giang 24 30000
+Nep01 Nep cai hoa vang 63 20000
+Nep02 Nep sua deo 23 18000
+Nep03 Nep than Soc Trang 17 25000
+Gao01 Gao nang huong 50 15000
+Gao01 Gao nang huong 10 15000
+Gao01 Gao nang huong 60 15000
+Gao02 Gao thom Thai 28 14000
+Gao02 Gao thom Thai 30 14000
+Gao02 Gao thom Thai 30 14000
+Nep01 Nep cai hoa vang 57 20000
+Nep02 Nep sua deo 11 18000
+Gao03 Gao lut An Giang 21 30000
+Gao03 Gao lut An Giang 52 30000
+Nep03 Nep than Soc Trang 25 25000
+Nep03 Nep than Soc Trang 30 25000
