@@ -4,10 +4,7 @@
 ## # Introduction
 **Goals**:
 
-+ [ ] object-oriented example.
-
-+ [ ] what is function.
-
-+ [ ] how to make computer say "Hello" in C.
-
-+ [ ] compile source code to executable code.
+- object-oriented example.
+- what is function.
+- how to make computer say "Hello" in C.
+- compile source code to executable code.
