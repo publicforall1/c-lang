@@ -9,22 +9,22 @@ int isPrime(int number);
 
 int main(void) {
 
-  testIntToInt(isPrime, "Testcase/prime_number.txt");
+    testIntToInt(isPrime, "Testcase/prime_number.txt");
 
-  return 0;
+    return 0;
 }
 
 int isPrime(int number) {
-  int flag = 1;
+    int flag = 1;
 
-  // validate input
-  if (number < 2)
-    return 0;
+    // validate input
+    if (number < 2)
+        return 0;
 
-  for (int i = 2; i <= sqrt(number); i++)
-    if (number % i == 0)
-      flag = 0;
-  return flag;
+    for (int i = 2; i <= sqrt(number); i++)
+        if (number % i == 0)
+            flag = 0;
+    return flag;
 }
 // Pseudo Code
 /* Check Prime Number Or Not

@@ -24,56 +24,56 @@
  * */
 
 struct SinhVien {
-  int MSSV;
-  char HoTen[50];
-  float diemTB;
+    int MSSV;
+    char HoTen[50];
+    float diemTB;
 };
 
 /* Function Prototype */
 bool isNull(void* ptr);
 
 int main() {
-  int i, n = 5, index = 0;
-  struct SinhVien* listSV = malloc(n * sizeof(struct SinhVien));
+    int i, n = 5, index = 0;
+    struct SinhVien* listSV = malloc(n * sizeof(struct SinhVien));
 
-  if (isNull(listSV))
-    exit(1);
+    if (isNull(listSV))
+        exit(1);
 
-  while (TRUE) {
-    int mssv;
-    struct SinhVien* tempList;
-    if (index == n) {
-      n += 5;
-      tempList = realloc(listSV, n * sizeof(struct SinhVien));
-      if (isNull(tempList) == FALSE)
-        listSV = tempList;
+    while (TRUE) {
+        int mssv;
+        struct SinhVien* tempList;
+        if (index == n) {
+            n += 5;
+            tempList = realloc(listSV, n * sizeof(struct SinhVien));
+            if (isNull(tempList) == FALSE)
+                listSV = tempList;
+        }
+
+        SHOW("MSSV: ");
+        GET_INT(&mssv);
+        if (mssv == -1)
+            break;
+        listSV[index].MSSV = mssv;
+        SHOW("HoTen: ");
+        GET_STR_INCLUDE_SPACE(listSV[index].HoTen);
+        SHOW("DiemTB: ");
+        GET_FLOAT(&listSV[index].diemTB);
+        ++index;
     }
 
-    SHOW("MSSV: ");
-    GET_INT(&mssv);
-    if (mssv == -1)
-      break;
-    listSV[index].MSSV = mssv;
-    SHOW("HoTen: ");
-    GET_STR_INCLUDE_SPACE(listSV[index].HoTen);
-    SHOW("DiemTB: ");
-    GET_FLOAT(&listSV[index].diemTB);
-    ++index;
-  }
+    for (i = 0; i < index; ++i) {
+        SHOW("---- Sinh vien thu %d ----\n", i + 1);
+        SHOW("MSSV: %d\nHoTen: %s\nDiemTB: %.3f\n", listSV[i].MSSV,
+             listSV[i].HoTen, listSV[i].diemTB);
+    }
 
-  for (i = 0; i < index; ++i) {
-    SHOW("---- Sinh vien thu %d ----\n", i + 1);
-    SHOW("MSSV: %d\nHoTen: %s\nDiemTB: %.3f\n", listSV[i].MSSV, listSV[i].HoTen,
-         listSV[i].diemTB);
-  }
-
-  free(listSV);
-  return 0;
+    free(listSV);
+    return 0;
 }
 
 bool isNull(void* ptr) {
-  if (ptr == NULL)
-    return TRUE;
-  else
-    return FALSE;
+    if (ptr == NULL)
+        return TRUE;
+    else
+        return FALSE;
 }

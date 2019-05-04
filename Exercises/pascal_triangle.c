@@ -10,49 +10,49 @@
 
 int main(void) {
 
-  // 2D array -> good solution at this time
-  // great input : 0 < n < 41
-  unsigned int n;
-  scanf("%d", &n);
+    // 2D array -> good solution at this time
+    // great input : 0 < n < 41
+    unsigned int n;
+    scanf("%d", &n);
 
-  // validate input for safety
-  if (n < 1 || n > 40) {
-    printf("\nBad Signal :: Number of rows\n");
-    exit(1);
-  }
-
-  long long int arr[n][n];
-
-  // Step 1: initial values for 2 first rows
-  // all elements of two first rows will be 1
-  // 1 x xxxxxxxxxxxxxxxx
-  // 1 1 xxxxxxxxxxxxxxxx
-  for (int i = 0; i < 2; i++) {
-    for (int j = 0; j < i + 1; j++) {
-      arr[i][j] = 1;
+    // validate input for safety
+    if (n < 1 || n > 40) {
+        printf("\nBad Signal :: Number of rows\n");
+        exit(1);
     }
-  }
 
-  // calculate value for all rows remainder
-  // if n > 2, do this block
-  for (int i = 2; i < n; i++) {
-    for (int j = 0; j < i + 1; j++) {
-      // if first or last element of row -> set this value equal to 1
-      if (j == 0 || j == i) {
-        arr[i][j] = 1;
-      } else {
-        arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];
-      }
+    long long int arr[n][n];
+
+    // Step 1: initial values for 2 first rows
+    // all elements of two first rows will be 1
+    // 1 x xxxxxxxxxxxxxxxx
+    // 1 1 xxxxxxxxxxxxxxxx
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < i + 1; j++) {
+            arr[i][j] = 1;
+        }
     }
-  }
-  // -----------------------------------
-  // ---------- Print Triangle ---------
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < i + 1; j++) {
-      printf("%lld ", arr[i][j]);
+
+    // calculate value for all rows remainder
+    // if n > 2, do this block
+    for (int i = 2; i < n; i++) {
+        for (int j = 0; j < i + 1; j++) {
+            // if first or last element of row -> set this value equal to 1
+            if (j == 0 || j == i) {
+                arr[i][j] = 1;
+            } else {
+                arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];
+            }
+        }
     }
-    printf("\n");
-  }
+    // -----------------------------------
+    // ---------- Print Triangle ---------
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < i + 1; j++) {
+            printf("%lld ", arr[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 /* Pascal's Triangle Form

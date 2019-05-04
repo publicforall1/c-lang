@@ -8,18 +8,18 @@ int getNumberOfDigits(int n);
 
 int main(void) {
 
-  testIntToInt(getNumberOfDigits, "Testcase/digits.txt");
+    testIntToInt(getNumberOfDigits, "Testcase/digits.txt");
 
-  return 0;
+    return 0;
 }
 
 int getNumberOfDigits(int n) {
-  int numberOfDigit = 1;
-  while (n / 10 != 0) {
-    numberOfDigit++;
-    n /= 10;
-  }
-  return numberOfDigit;
+    int numberOfDigit = 1;
+    while (n / 10 != 0) {
+        numberOfDigit++;
+        n /= 10;
+    }
+    return numberOfDigit;
 }
 // Pseudo Code
 /* Find number of digits

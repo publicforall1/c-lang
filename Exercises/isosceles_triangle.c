@@ -5,35 +5,35 @@ void print_space(int number_of_space);
 
 int main(void) {
 
-  int height;
-  scanf("%d", &height);
+    int height;
+    scanf("%d", &height);
 
-  int number_of_star = 1;
-  int number_of_space = (height - 1) * 3;
+    int number_of_star = 1;
+    int number_of_space = (height - 1) * 3;
 
-  while (number_of_space >= 0) {
-    print_space(number_of_space);
-    print_star(number_of_star);
-    number_of_space -= 3;
-    number_of_star += 2;
-  }
+    while (number_of_space >= 0) {
+        print_space(number_of_space);
+        print_star(number_of_star);
+        number_of_space -= 3;
+        number_of_star += 2;
+    }
 
-  return 0;
+    return 0;
 }
 
 void print_star(int number_of_star) {
-  if (number_of_star == 1)
-    printf("*");
-  else
-    for (int i = 0; i < number_of_star; i++)
-      printf("*  ");
+    if (number_of_star == 1)
+        printf("*");
+    else
+        for (int i = 0; i < number_of_star; i++)
+            printf("*  ");
 
-  printf("\n");
+    printf("\n");
 };
 
 void print_space(int number_of_space) {
-  for (int i = 0; i < number_of_space; i++)
-    printf(" ");
+    for (int i = 0; i < number_of_space; i++)
+        printf(" ");
 };
 
 // Pseudo Code

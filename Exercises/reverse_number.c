@@ -8,18 +8,18 @@ int reverseNumber(int number);
 
 int main(void) {
 
-  testIntToInt(reverseNumber, "Testcase/reverse_number.txt");
+    testIntToInt(reverseNumber, "Testcase/reverse_number.txt");
 
-  return 0;
+    return 0;
 }
 
 int reverseNumber(int number) {
-  int numberReversed = 0;
-  while (number != 0) {
-    numberReversed = numberReversed * 10 + number % 10;
-    number /= 10;
-  }
-  return numberReversed;
+    int numberReversed = 0;
+    while (number != 0) {
+        numberReversed = numberReversed * 10 + number % 10;
+        number /= 10;
+    }
+    return numberReversed;
 }
 
 // Pseudo Code

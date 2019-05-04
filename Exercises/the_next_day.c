@@ -8,49 +8,49 @@ bool is_leap(int year);
 
 int main(void) {
 
-  int last_day_of_month[13] = {0,  31, 28, 31, 30, 31, 30,
-                               31, 31, 30, 31, 30, 31};
-  int day, month, year;
+    int last_day_of_month[13] = {0,  31, 28, 31, 30, 31, 30,
+                                 31, 31, 30, 31, 30, 31};
+    int day, month, year;
 
-  scanf("%d%d%d", &day, &month, &year);
+    scanf("%d%d%d", &day, &month, &year);
 
-  // if leap year, max day of month 2 equal 29
-  if (is_leap(year) == 1)
-    last_day_of_month[2] = 29;
+    // if leap year, max day of month 2 equal 29
+    if (is_leap(year) == 1)
+        last_day_of_month[2] = 29;
 
-  day++;
-  if (day > last_day_of_month[month]) {
-    day = 1;
-    month++;
-    if (month > 12) {
-      month = 1;
-      year++;
+    day++;
+    if (day > last_day_of_month[month]) {
+        day = 1;
+        month++;
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
     }
-  }
 
-  printf("%02d/%02d/%02d", day, month, year);
+    printf("%02d/%02d/%02d", day, month, year);
 
-  return 0;
+    return 0;
 }
 
 bool is_leap(int year) {
-  bool output = false;
-  /*
-  year % 400 == 0:
-      true
-  else:
-      if (year % 4 == 0 && year % 100 != 0):
-          true
-      else:
-          false
-  */
-  if (year % 400 == 0)
-    output = true;
-  else if (year % 4 == 0 && year % 100 != 0)
-    output = true;
-  else
-    output = false;
-  return output;
+    bool output = false;
+    /*
+    year % 400 == 0:
+        true
+    else:
+        if (year % 4 == 0 && year % 100 != 0):
+            true
+        else:
+            false
+    */
+    if (year % 400 == 0)
+        output = true;
+    else if (year % 4 == 0 && year % 100 != 0)
+        output = true;
+    else
+        output = false;
+    return output;
 }
 // -*- Pseudo Code -*-
 /* Show the next day

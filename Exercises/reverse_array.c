@@ -6,28 +6,28 @@ void reverse_array(int arr[], int number_of_element);
 void show_array(int arr[], int number_of_element);
 
 int main(void) {
-  int arr[arr_length] = {5, 7, 6, 8, 1};
-  reverse_array(arr, arr_length);
-  show_array(arr, arr_length);
+    int arr[arr_length] = {5, 7, 6, 8, 1};
+    reverse_array(arr, arr_length);
+    show_array(arr, arr_length);
 }
 
 void swap(int* a, int* b) {
-  int temp = *a;
-  *a = *b;
-  *b = temp;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 };
 
 void reverse_array(int arr[], int number_of_element) {
-  for (int i = 0; i < number_of_element / 2; i++) {
-    swap(&arr[i], &arr[number_of_element - 1 - i]);
-  }
+    for (int i = 0; i < number_of_element / 2; i++) {
+        swap(&arr[i], &arr[number_of_element - 1 - i]);
+    }
 };
 
 void show_array(int arr[], int number_of_element) {
-  for (int i = 0; i < number_of_element; i++) {
-    printf("%d ", arr[i]);
-  }
-  printf("\n");
+    for (int i = 0; i < number_of_element; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
 };
 
 /**
