@@ -1,19 +1,13 @@
-// checkout pseudo-code at the bottom of this file.
-// Type `Ctrl + F` to find "Pseudo Code"
+/* checkout pseudo-code at the bottom of this file.
+/* Type `Ctrl + F` to find "Pseudo Code" */
 
-#include "testcase.h"
 #include <stdio.h>
 
-int getNumberOfDigits(int n);
+int get_number_digits(int n);
 
-int main(void) {
+int main(void) { return 0; }
 
-    testIntToInt(getNumberOfDigits, "Testcase/digits.txt");
-
-    return 0;
-}
-
-int getNumberOfDigits(int n) {
+int get_number_digits(int n) {
     int numberOfDigit = 1;
     while (n / 10 != 0) {
         numberOfDigit++;
@@ -21,7 +15,7 @@ int getNumberOfDigits(int n) {
     }
     return numberOfDigit;
 }
-// Pseudo Code
+/* ============ Pseudo Code ============ */
 /* Find number of digits
 Expected Sample:
 0 -> 1

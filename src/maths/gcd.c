@@ -1,24 +1,18 @@
-// checkout pseudo-code at the bottom of this file.
-// Type `Ctrl + F` to find "Pseudo Code"
+/* checkout pseudo-code at the bottom of this file.
+/* Type `Ctrl + F` to find "Pseudo Code" */
 
-#include "testcase.h"
 #include <stdio.h>
 
 int get_gcd(int a, int b);
 
-int main(void) {
-
-    test2IntToInt(get_gcd, "Testcase/gcd.txt");
-
-    return 0;
-}
+int main(void) { return 0; }
 
 int get_gcd(int a, int b) {
     int gcd;
-    // change number to positive number
+    /* change number to positive number */
     a = a < 0 ? -a : a;
     b = b < 0 ? -b : b;
-    // swap a, b if a > b, because algorithm works great when a < b;
+    /* swap a, b if a > b, because algorithm works great when a < b; */
     if (a > b) {
         int temp = a;
         a = b;
@@ -32,7 +26,7 @@ int get_gcd(int a, int b) {
     else if (b == 0)
         gcd = a;
     else {
-        // from here both a & b is positive and not equal to 0
+        /* from here both a & b is positive and not equal to 0 */
         while (a % b != 0) {
             gcd = a % b;
             a = b;
@@ -40,9 +34,9 @@ int get_gcd(int a, int b) {
         }
     }
     return gcd;
-};
+}
 
-// *-* Pseudo Code *-*
+/* ============ Pseudo Code ============ */
 /* Find Greatest Common Divisor using Euclid Alogrithm
 
 Expected Sample:

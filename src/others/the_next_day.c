@@ -1,5 +1,5 @@
-// checkout pseudo-code at the bottom of this file.
-// Type `Ctrl + F` to find "Pseudo Code"
+/* checkout pseudo-code at the bottom of this file.
+// Type `Ctrl + F` to find "Pseudo Code" */
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -8,23 +8,26 @@ bool is_leap(int year);
 
 int main(void) {
 
-    int last_day_of_month[13] = {0,  31, 28, 31, 30, 31, 30,
-                                 31, 31, 30, 31, 30, 31};
-    int day, month, year;
+    int day, month, year, maxDay;
 
-    scanf("%d%d%d", &day, &month, &year);
+    printf("Enter dd/mm/yyyy: ");
+    scanf("%d/%d/%d", &day, &month, &year);
 
-    // if leap year, max day of month 2 equal 29
-    if (is_leap(year) == 1)
-        last_day_of_month[2] = 29;
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 ||
+        month == 10 || month == 12)
+        maxDay = 31;
+    else if (month == 2)
+        maxDay = is_leap(year) == 1 ? 29 : 28;
+    else
+        maxDay = 30;
 
-    day++;
-    if (day > last_day_of_month[month]) {
+    ++day;
+    if (day > maxDay) {
         day = 1;
-        month++;
+        ++month;
         if (month > 12) {
             month = 1;
-            year++;
+            ++year;
         }
     }
 
@@ -52,7 +55,7 @@ bool is_leap(int year) {
         output = false;
     return output;
 }
-// -*- Pseudo Code -*-
+/* ============ Pseudo Code ============ */
 /* Show the next day
 
 stdin: 3 integers decribe current day.

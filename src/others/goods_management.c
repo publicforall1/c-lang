@@ -1,8 +1,8 @@
 /**
  * Program Name: Quản lí hàng hóa
  * Author: taiprogramer
- * Requirements: ./Requirements/De07_hk2_17-18.pdf
- * Data: ./Data/Ban_hang.txt
+ * Requirements: ../shared/De07_hk2_17-18.pdf
+ * Data: ../shared/Ban_hang.txt
  * Telegram: t.me/taiprogramer
  * Comment: Được viết bằng cả trái tim của một anh chàng rất đẹp trai!
  * Lasted Update: 16:56, 26/04/2019, Viet Nam

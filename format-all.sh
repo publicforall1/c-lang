@@ -1,10 +1,6 @@
 #!/bin/bash
-for f in ./Exercises/*.c
+for f in ./src/*/*.c
 do
-	clang-format -i $f
-done
-
-for f in ./Working/*.c
-do
+	echo Formatting $f
 	clang-format -i $f
 done

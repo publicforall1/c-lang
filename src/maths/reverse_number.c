@@ -1,19 +1,13 @@
-// checkout pseudo-code at the bottom of this file.
-// Type `Ctrl + F` to find "Pseudo Code"
+/* checkout pseudo-code at the bottom of this file.
+// Type `Ctrl + F` to find "Pseudo Code" */
 
-#include "testcase.h"
 #include <stdio.h>
 
-int reverseNumber(int number);
+int reverse_number(int number);
 
-int main(void) {
+int main(void) { return 0; }
 
-    testIntToInt(reverseNumber, "Testcase/reverse_number.txt");
-
-    return 0;
-}
-
-int reverseNumber(int number) {
+int reverse_number(int number) {
     int numberReversed = 0;
     while (number != 0) {
         numberReversed = numberReversed * 10 + number % 10;
@@ -22,7 +16,7 @@ int reverseNumber(int number) {
     return numberReversed;
 }
 
-// Pseudo Code
+/* ============ Pseudo Code ============ */
 /* Reverse Number
 Expected Sample:
 123 -> 321
