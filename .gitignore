@@ -56,8 +56,8 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# End of https://www.gitignore.io/api/c
 # taiprogramer's custom
 .vscode/
 code.c
 code
-# End of https://www.gitignore.io/api/c
