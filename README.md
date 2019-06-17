@@ -1,6 +1,4 @@
 # Practice C Programming Language
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2019%2F05%2F10%2C%2014%3A44-green.svg)
-
 ## # Maths
 - [Fibonacci Numbers Generate](./src/maths/fib.c)
 - [Greatest Common Divisor using Euclid Divisor Exercises](./src/maths/gcd.c)
