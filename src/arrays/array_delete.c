@@ -1,62 +1,67 @@
 /* *
- * Program Name: Mảng - Xóa phần tử theo giá trị
+ * Program Name: Array - Delete element base on value
  * Author: Võ Văn Khánh Quốc
  * Clean code: taiprogramer
  * - Without any WARRANTY -
  */
 #include <stdio.h>
 
-void nhapMang(int mangSoNguyen[], int soPhantu);
-void xuatMang(int mangSoNguyen[], int soPhantu);
-void xoaPhanTuTheoGiaTri(int mangSoNguyen[], int* soPhanTu, int giaTriMuonXoa);
-void xoaPhanTuTheoViTri(int mangSoNguyen[], int* soPhanTu, int viTriXoa);
+void get_input(int arr[], int size);
+void show_array(int arr[], int size);
+void delete_element_value(int arr[], int* size, int value);
+void delete_element_position(int arr[], int* size, int position);
 
 int main() {
-    int soPhantu, giaTriMuonXoa;
+    int size, value;
     printf("Nhap so phan tu mang: ");
-    scanf("%d", &soPhantu);
+    scanf("%d", &size);
 
-    int mangSoNguyen[soPhantu];
-    nhapMang(mangSoNguyen, soPhantu);
-    xuatMang(mangSoNguyen, soPhantu);
+    int arr[size];
+    get_input(arr, size);
+    show_array(arr, size);
 
     printf("Nhap gia tri muon xoa: ");
-    scanf("%d", &giaTriMuonXoa);
-    xoaPhanTuTheoGiaTri(mangSoNguyen, &soPhantu, giaTriMuonXoa);
-    xuatMang(mangSoNguyen, soPhantu);
+    scanf("%d", &value);
+    delete_element_value(arr, &size, value);
+    show_array(arr, size);
 }
 
-void nhapMang(int mangSoNguyen[], int soPhantu) {
-    int i;
-    for (i = 0; i < soPhantu; i++) {
+void get_input(int arr[], int size) {
+    int i = 0;
+    while(i < size){
         printf("Nhap phan tu thu %d : ", i + 1);
-        scanf("%d", &mangSoNguyen[i]);
+        scanf("%d", &arr[i]);
+        ++i;
     }
 }
 
-void xuatMang(int mangSoNguyen[], int soPhantu) {
+void show_array(int arr[], int size) {
     printf("Gia tri hien tai cua mang la:\n");
-    int i;
-    for (i = 0; i < soPhantu; i++)
-        printf("%d ", mangSoNguyen[i]);
-
+    int i = 0;
+    while(i < size){
+        printf("%d ", arr[i]);
+        ++i;
+    }
     printf("\n");
 }
 
-void xoaPhanTuTheoGiaTri(int mangSoNguyen[], int* soPhanTu, int giaTriMuonXoa) {
-    int i;
-    for (i = 0; i < *soPhanTu; i++) {
-        if (mangSoNguyen[i] == giaTriMuonXoa) {
-            xoaPhanTuTheoViTri(mangSoNguyen, soPhanTu, i);
-            i--; // Back to check
+void delete_element_value(int arr[], int* size, int value) {
+    int i = 0;
+    while(i < *size){
+        if (arr[i] == value) {
+            delete_element_position(arr, size, i);
+            --i; // Back to check
         }
+        ++i;
     }
 }
 
-void xoaPhanTuTheoViTri(int mangSoNguyen[], int* soPhanTu, int viTriXoa) {
-    int i;
-    for (i = viTriXoa; i < *soPhanTu; i++)
-        mangSoNguyen[i] = mangSoNguyen[i + 1];
-
-    *soPhanTu = *soPhanTu - 1;
+void delete_element_position(int arr[], int* size, int position) {
+    int i = position;
+    while(i < *size){
+        arr[i] = arr[i + 1];
+        ++i;
+    }
+    // resize array after delete 1 element
+    *size = *size - 1;
 }
