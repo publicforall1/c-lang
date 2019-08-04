@@ -1,34 +1,52 @@
 #include <stdio.h>
-#define arr_length 5
 
 void swap(int* a, int* b);
-void reverse_array(int arr[], int number_of_element);
-void show_array(int arr[], int number_of_element);
+void reverse_array(int arr[], int size);
+void get_input(int arr[], int size);
+void show_array(int arr[], int size);
 
 int main(void) {
-    int arr[arr_length] = {5, 7, 6, 8, 1};
-    reverse_array(arr, arr_length);
-    show_array(arr, arr_length);
+    int size;
+    printf("Enter number of element: ");
+    scanf("%d", &size);
+    
+    int arr[size];
+    get_input(arr, size);
+    reverse_array(arr, size);
+    show_array(arr, size);
 }
 
 void swap(int* a, int* b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-};
+    // using XOR operator
+    *a = *a ^ *b;
+    *b = *a ^ *b;
+    *a = *a ^ *b;
+}
 
-void reverse_array(int arr[], int number_of_element) {
-    for (int i = 0; i < number_of_element / 2; i++) {
-        swap(&arr[i], &arr[number_of_element - 1 - i]);
+void reverse_array(int arr[], int size) {
+    int i = 0, half_size = size / 2;
+    while(i < half_size){
+        swap(&arr[i], &arr[size - 1 - i]);
+        ++i;
     }
-};
+}
 
-void show_array(int arr[], int number_of_element) {
-    for (int i = 0; i < number_of_element; i++) {
+void get_input(int arr[], int size){
+    int i = 0;
+    while(i < size){
+        scanf("%d", &arr[i]);
+        ++i;
+    }
+}
+
+void show_array(int arr[], int size) {
+    int i = 0;
+    while(i < size){
         printf("%d ", arr[i]);
+        ++i;
     }
     printf("\n");
-};
+}
 
 /**
  * Reverse Array
