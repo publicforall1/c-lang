@@ -5,15 +5,25 @@
 
 int get_number_digits(int n);
 
-int main(void) { return 0; }
+int main(void) { 
+
+    int n;
+    while(1){
+        printf("Enter your number: ");
+        scanf("%d", &n);
+        printf("Your number have %d digits.\n", get_number_digits(n));
+    }
+
+    return 0; 
+}
 
 int get_number_digits(int n) {
-    int numberOfDigit = 1;
+    int result = 1;
     while (n / 10 != 0) {
-        numberOfDigit++;
+        ++result;
         n /= 10;
     }
-    return numberOfDigit;
+    return result;
 }
 /* ============ Pseudo Code ============ */
 /* Find number of digits
