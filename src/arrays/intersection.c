@@ -1,109 +1,113 @@
 #include <stdio.h>
 
-void nhap_mang(int mang_so_nguyen[], int so_phan_tu);
-void in_mang(int mang_so_nguyen[], int so_phan_tu);
-int giao_mang(int a[], int b[], int ket_qua[], int so_phan_tu);
-int hop_mang(int a[], int b[], int ket_qua[], int so_phan_tu);
+void get_input(int arr[], int size);
+void show_array(int arr[], int size);
+int intersect(int A[], int B[], int result[], int size);
+int merge(int A[], int B[], int result[], int size);
 
 int main(void) {
 
-    int so_phan_tu;
+    int size, new_size;
 
-    printf("Nhap so phan tu cua mang: ");
-    scanf("%d", &so_phan_tu);
+    printf("Enter number of element: ");
+    scanf("%d", &size);
 
-    int a[so_phan_tu], b[so_phan_tu];
-    int mang_giao[so_phan_tu], mang_hop[so_phan_tu * 2];
+    int A[size], B[size];
+    int intersected_arr[size], merged_arr[size * 2];
 
-    printf("\n---- mang a ----\n");
-    nhap_mang(a, so_phan_tu);
-    printf("\n---- mang b ----\n");
-    nhap_mang(b, so_phan_tu);
+    printf("\n---- Array A ----\n");
+    get_input(A, size);
+    printf("\n---- Array B ----\n");
+    get_input(B, size);
 
-    in_mang(a, so_phan_tu);
-    in_mang(b, so_phan_tu);
+    show_array(A, size);
+    show_array(B, size);
 
-    int so_phan_tu_sau_khi_giao = giao_mang(a, b, mang_giao, so_phan_tu);
+    // demo
+    new_size = intersect(A, B, intersected_arr, size);
 
-    printf("\n---- mang sau khi giao ----\n");
-    in_mang(mang_giao, so_phan_tu_sau_khi_giao);
+    printf("\n---- Array after intersect ----\n");
+    show_array(intersected_arr, new_size);
 
-    int so_phan_tu_sau_khi_hop = hop_mang(a, b, mang_hop, so_phan_tu);
+    new_size = merge(A, B, merged_arr, size);
 
-    printf("\n---- mang sau khi hop ----\n");
-    in_mang(mang_hop, so_phan_tu_sau_khi_hop);
+    printf("\n---- Array after merge ----\n");
+    show_array(merged_arr, new_size);
 
     return 0;
 }
 
-void nhap_mang(int mang_so_nguyen[], int so_phan_tu) {
-    // nhập mảng với các phần tử tăng dần và không trùng
-    // if a > b -> thêm phần tử vào mảng
-
-    int vi_tri = 0;
-
-    // phần tử đầu tiên thì thêm vào luôn khỏi cần kiểm tra điều kiện
-    printf("Nhap phan tu thu %d: ", vi_tri + 1);
-    scanf("%d", &mang_so_nguyen[vi_tri]);
-    vi_tri++;
-
-    while (vi_tri < so_phan_tu) {
-        printf("Nhap phan tu thu %d: ", vi_tri + 1);
-        int gia_tri_tam_thoi;
-        scanf("%d", &gia_tri_tam_thoi);
-        // nếu giá trị tạm thời lớn hơn giá trị trước đó thì thêm nó vào mảng
-        if (gia_tri_tam_thoi > mang_so_nguyen[vi_tri - 1]) {
-            mang_so_nguyen[vi_tri] = gia_tri_tam_thoi;
-            vi_tri++;
+void get_input(int arr[], int size) {
+    /**
+     * :Rules
+     * after element must greater than previous element
+     * :End_Rules
+     */
+    int i = 0;
+    printf("Enter element #%d: ", i + 1);
+    scanf("%d", &arr[i]);
+    ++i;
+    while (i < size) {
+        printf("Enter element #%d: ", i + 1);
+        int temp;
+        scanf("%d", &temp);
+        // if temp greater than previous value, add it to array
+        if (temp > arr[i - 1]) {
+            arr[i] = temp;
+            ++i;
         }
     }
-};
+}
 
-void in_mang(int mang_so_nguyen[], int so_phan_tu) {
-    for (int i = 0; i < so_phan_tu; i++)
-        printf("%d ", mang_so_nguyen[i]);
+void show_array(int arr[], int size) {
+    if (!size)
+        return;
+    int i = 0;
+    while(i < size){
+        printf("%d ", arr[i]);
+        ++i;
+    }
     printf("\n");
-};
+}
 
-int giao_mang(int a[], int b[], int ket_qua[], int so_phan_tu) {
-    int vi_tri = -1;
-    // duyệt mảng a, nếu có phần tử nào trong a
-    // giống với phần tử trong b thì thêm phần tử đó vào ket_qua
-    for (int i = 0; i < so_phan_tu; i++) {
-        for (int j = 0; j < so_phan_tu; j++) {
-            if (a[i] == b[j]) {
-                vi_tri++;
-                ket_qua[vi_tri] = a[i];
+int intersect(int A[], int B[], int result[], int size) {
+    /**
+     * :Meta
+     * This function use to produce intersection of 2 arrays.
+     * :End_Meta
+     */
+    int index = -1;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (A[i] == B[j]) {
+                ++index;
+                result[index] = A[i];
             }
         }
     }
-    // số phần tử của mảng sau khi giao
-    // tăng vị trí lên 1 đơn vị rồi trả về
-    return ++vi_tri;
-};
+    return ++index;
+}
 
-int hop_mang(int a[], int b[], int ket_qua[], int so_phan_tu) {
-    int vi_tri = -1;
-    // thêm toàn bộ mảng a vào ket_qua vì a chứa các
-    // phần tử tăng dần và khác nhau
-    for (int i = 0; i < so_phan_tu; i++) {
-        vi_tri++;
-        ket_qua[vi_tri] = a[i];
+int merge(int A[], int B[], int result[], int size) {
+    int index = -1, i = 0, flag, j;
+    // add all element in A to result
+    while(i < size){
+        ++index;
+        result[index] = A[i];
+        ++i;
     }
-    // duyệt mảng b, nếu có phần tử nào trong b
-    // khác tất cả các phần tử trong a thì thêm nó vào mảng
-    for (int i = 0; i < so_phan_tu; i++) {
-        int flag = 0;
-        for (int j = 0; j < so_phan_tu; j++) {
-            if (b[i] == a[j])
+    // check all element in B, if element different from A
+    // add it to result
+    for (i = 0; i < size; i++) {
+        flag = 0;
+        for (j = 0; j < size; j++) {
+            if (B[i] == A[j])
                 flag = 1;
         }
         if (flag == 0) {
-            vi_tri++;
-            ket_qua[vi_tri] = b[i];
+            ++index;
+            result[index] = B[i];
         }
     }
-    // số phần tử của mảng sau khi giao
-    // tăng vị trí lên 1 đơn vị rồi trả về
-    return ++vi_tri;
-};
+    return ++index;
+}
