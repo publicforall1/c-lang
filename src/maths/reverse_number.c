@@ -3,17 +3,25 @@
 
 #include <stdio.h>
 
-int reverse_number(int number);
+int reverse_number(int n);
 
-int main(void) { return 0; }
-
-int reverse_number(int number) {
-    int numberReversed = 0;
-    while (number != 0) {
-        numberReversed = numberReversed * 10 + number % 10;
-        number /= 10;
+int main(void) { 
+    int n;
+    while(1){
+        printf("Enter your number: ");
+        scanf("%d", &n);
+        printf("Your reverse number is %d.\n", reverse_number(n));
     }
-    return numberReversed;
+    return 0; 
+}
+
+int reverse_number(int n) {
+    int result = 0;
+    while (n != 0) {
+        result = result * 10 + n % 10;
+        n /= 10;
+    }
+    return result;
 }
 
 /* ============ Pseudo Code ============ */
@@ -23,18 +31,18 @@ Expected Sample:
 5768 -> 8657
 9876 -> 6789
 HandTouched:
-numberReversed = 0
-123 % 10 = 3 (numberReversed * 10 + 3 = 3)
+result = 0
+123 % 10 = 3 (result * 10 + 3 = 3)
 123 / 10 = 12
 
-12 % 10 = 2 (numberReversed * 10 + 2 = 32)
+12 % 10 = 2 (result * 10 + 2 = 32)
 12 / 10 = 1
 
-1 % 10 = 1 (numberReversed * 10 + 1 = 321)
+1 % 10 = 1 (result * 10 + 1 = 321)
 1 / 10 = 0 -> break
 
 while(n != 0):
-    numberReversed = numberReversed * 10 + n % 10
+    result = result * 10 + n % 10
     n /= 10
 
 */
