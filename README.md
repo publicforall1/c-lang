@@ -20,7 +20,7 @@
 - [The Next Day](./src/others/the_next_day.c)
 
 ## # Data structures
-- [List based on array](./src/list_based_array.c)
+- [List based on array](./src/dsa/list_based_array.c)
 ___
 
 :love_letter: Report any issue via our [Telegram](https://t.me/taiprogramer)
