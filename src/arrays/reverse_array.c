@@ -9,7 +9,7 @@ int main(void) {
     int size;
     printf("Enter number of element: ");
     scanf("%d", &size);
-    
+
     int arr[size];
     get_input(arr, size);
     reverse_array(arr, size);
@@ -25,15 +25,15 @@ void swap(int* a, int* b) {
 
 void reverse_array(int arr[], int size) {
     int i = 0, half_size = size / 2;
-    while(i < half_size){
+    while (i < half_size) {
         swap(&arr[i], &arr[size - 1 - i]);
         ++i;
     }
 }
 
-void get_input(int arr[], int size){
+void get_input(int arr[], int size) {
     int i = 0;
-    while(i < size){
+    while (i < size) {
         scanf("%d", &arr[i]);
         ++i;
     }
@@ -41,7 +41,7 @@ void get_input(int arr[], int size){
 
 void show_array(int arr[], int size) {
     int i = 0;
-    while(i < size){
+    while (i < size) {
         printf("%d ", arr[i]);
         ++i;
     }

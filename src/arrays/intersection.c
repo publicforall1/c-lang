@@ -63,7 +63,7 @@ void show_array(int arr[], int size) {
     if (!size)
         return;
     int i = 0;
-    while(i < size){
+    while (i < size) {
         printf("%d ", arr[i]);
         ++i;
     }
@@ -91,7 +91,7 @@ int intersect(int A[], int B[], int result[], int size) {
 int merge(int A[], int B[], int result[], int size) {
     int index = -1, i = 0, flag, j;
     // add all element in A to result
-    while(i < size){
+    while (i < size) {
         ++index;
         result[index] = A[i];
         ++i;

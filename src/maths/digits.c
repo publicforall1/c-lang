@@ -5,16 +5,16 @@
 
 int get_number_digits(int n);
 
-int main(void) { 
+int main(void) {
 
     int n;
-    while(1){
+    while (1) {
         printf("Enter your number: ");
         scanf("%d", &n);
         printf("Your number have %d digits.\n", get_number_digits(n));
     }
 
-    return 0; 
+    return 0;
 }
 
 int get_number_digits(int n) {

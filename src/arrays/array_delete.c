@@ -28,7 +28,7 @@ int main() {
 
 void get_input(int arr[], int size) {
     int i = 0;
-    while(i < size){
+    while (i < size) {
         printf("Nhap phan tu thu %d : ", i + 1);
         scanf("%d", &arr[i]);
         ++i;
@@ -38,7 +38,7 @@ void get_input(int arr[], int size) {
 void show_array(int arr[], int size) {
     printf("Gia tri hien tai cua mang la:\n");
     int i = 0;
-    while(i < size){
+    while (i < size) {
         printf("%d ", arr[i]);
         ++i;
     }
@@ -47,7 +47,7 @@ void show_array(int arr[], int size) {
 
 void delete_element_value(int arr[], int* size, int value) {
     int i = 0;
-    while(i < *size){
+    while (i < *size) {
         if (arr[i] == value) {
             delete_element_position(arr, size, i);
             --i; // Back to check
@@ -58,7 +58,7 @@ void delete_element_value(int arr[], int* size, int value) {
 
 void delete_element_position(int arr[], int* size, int position) {
     int i = position;
-    while(i < *size){
+    while (i < *size) {
         arr[i] = arr[i + 1];
         ++i;
     }
