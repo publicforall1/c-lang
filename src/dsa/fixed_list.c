@@ -187,15 +187,13 @@ ElementType RETRIEVE(const Position P, const List L) {
  * @ params:
  * - ElementType X
  * - List X
- * @ return: (Position)
+ * @ return: Position if found else return end_list position
  */
 Position LOCATE(const ElementType X, const List L) {
     Position p = FIRST_LIST(L);
-    bool FOUND = false;
 
-    while (p != END_LIST(L) && (!FOUND)) {
+    while (p != END_LIST(L)) {
         if (RETRIEVE(p, L) == X) {
-            FOUND = true;
             break;
         }
         p = NEXT(p, L);
