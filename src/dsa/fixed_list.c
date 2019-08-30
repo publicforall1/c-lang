@@ -17,20 +17,26 @@
  * - length: number of element in list
  *
  * @ Methods:
- * - MAKENULL_LIST(L): create empty list
- * - IS_EMPTY_LIST(L): check is list empty
- * - FIRST_LIST(L): return first position of list
- * - END_LIST(L): return position after last element
- * - INSERT_LIST(X, P, L): insert X element to P position of list L
- * - DELETE_LIST(P, L): delete element at P position
- * - PREVIOUS(P, L): return position of P previous element
- * - NEXT(P, L): return position of P next element
- * - RETRIEVE(P, L): return value of element at P position
- * - LOCATE(X, L): return position of X element
- * - SHOW_ALL(L): display all element in list to screen
+ * - makenull_list(L): create empty list
+ * - is_empty_list(L): check is list empty
+ * - first_list(L): return first position of list
+ * - end_list(L): return position after last element
+ * - insert_list(X, P, L): insert X element to P position of list L
+ * - delete_list(P, L): delete element at P position
+ * - previous(P, L): return position of P previous element
+ * - next(P, L): return position of P next element
+ * - retrieve(P, L): return value of element at P position
+ * - locate(X, L): return position of X element
+ * - show_all(L): display all element in list to screen
  *
  * @ Notes:
  * - Position of list count from 1 (very natural)
+ * 
+ * @ Styles:
+ * - function: snake_case
+ * - struct/custom datatype: CamelCase
+ * - variable: snake_case
+ * - param: [optional]
  *
  */
 
@@ -49,18 +55,18 @@ typedef struct {
     int length;
 } List;
 
-bool IS_EMPTY_LIST(const List);
-ElementType RETRIEVE(const Position, const List);
-void SHOW_ALL(const List);
-void MAKENULL_LIST(List*);
-void INSERT_LIST(const ElementType, const Position, List*);
+bool is_empty_list(const List);
+ElementType retrieve(const Position, const List);
+void show_all(const List);
+void makenull_list(List*);
+void insert_list(const ElementType, const Position, List*);
 void demo(void);
-void DELETE_LIST(const Position, List*);
-Position FIRST_LIST(const List);
-Position END_LIST(const List);
-Position PREVIOUS(const Position, const List);
-Position NEXT(const Position, const List);
-Position LOCATE(const ElementType, const List);
+void delete_list(const Position, List*);
+Position first_list(const List);
+Position end_list(const List);
+Position previous(const Position, const List);
+Position next(const Position, const List);
+Position locate(const ElementType, const List);
 
 int main(void) {
     demo();
@@ -69,42 +75,42 @@ int main(void) {
 
 /* ============ Implement Func ============ */
 
-/** MAKENULL_LIST(L): create empty list
+/** makenull_list(L): create empty list
  * @ params: List* L - pointer of list (pass by reference)
  * @ return: (void)
  */
-void MAKENULL_LIST(List* L) { L->length = 0; }
+void makenull_list(List* L) { L->length = 0; }
 
-/** IS_EMPTY_LIST(L): check is list empty
+/** is_empty_list(L): check is list empty
  * @ params: List L
  * @ return: (bool) 1 (true) if list is empty, otherwise 0 (false)
  */
-bool IS_EMPTY_LIST(const List L) { return L.length == 0; }
+bool is_empty_list(const List L) { return L.length == 0; }
 
-/** FIRST_LIST(L): return first position of list
+/** first_list(L): return first position of list
  * @ params: List L
  * @ return: (int) first position of list
  */
-int FIRST_LIST(const List L) {
+int first_list(const List L) {
     /* position count from 1 so first position is 1 position */
     return 1;
 }
 
-/** END_LIST(L): return position after last element
+/** end_list(L): return position after last element
  * @ params: List L
  * @ return: (int) position after last element
  *
  */
-int END_LIST(const List L) { return L.length + 1; }
+int end_list(const List L) { return L.length + 1; }
 
-/** INSERT_LIST(X, P, L): insert X element to P position of list L
+/** insert_list(X, P, L): insert X element to P position of list L
  * @ params:
  * - ElementType X: value need insert to list
  * - Position P: position - where to put new element
  * - List* L
  * @ return: (void)
  */
-void INSERT_LIST(const ElementType X, const Position P, List* L) {
+void insert_list(const ElementType X, const Position P, List* L) {
     /* check is reached max length */
     if (L->length == capacity) {
         printf(ERROR_LIST_IS_FULL);
@@ -118,7 +124,7 @@ void INSERT_LIST(const ElementType X, const Position P, List* L) {
     }
 
     /* move all element start from P to the right side */
-    for (int i = END_LIST(*L) - 1; i > P - 1; i--) {
+    for (int i = end_list(*L) - 1; i > P - 1; i--) {
         L->Element[i] = L->Element[i - 1];
     }
 
@@ -129,15 +135,15 @@ void INSERT_LIST(const ElementType X, const Position P, List* L) {
     L->length++;
 }
 
-/** DELETE_LIST(P, L): delete element at P position
+/** delete_list(P, L): delete element at P position
  * @ params:
  * - Position P: position - where want to delete
  * - List* L
  * @ return: (void)
  */
-void DELETE_LIST(const Position P, List* L) {
+void delete_list(const Position P, List* L) {
     /* check is empty list */
-    if (IS_EMPTY_LIST(*L)) {
+    if (is_empty_list(*L)) {
         printf(ERROR_THIS_LIST_IS_EMPTY);
         return;
     }
@@ -157,60 +163,60 @@ void DELETE_LIST(const Position P, List* L) {
     L->length--;
 }
 
-/** PREVIOUS(P, L): return position of P previous element
+/** previous(P, L): return position of P previous element
  * @ params:
  * - Position P
  * - List L
  * @ return: (Position)
  */
-Position PREVIOUS(const Position P, const List L) { return P - 1; }
+Position previous(const Position P, const List L) { return P - 1; }
 
-/** NEXT(P, L): return position of P next element
+/** next(P, L): return position of P next element
  * @ params:
  * - Position P
  * - List L
  * @ return: (Position)
  */
-Position NEXT(const Position P, const List L) { return P + 1; }
+Position next(const Position P, const List L) { return P + 1; }
 
-/** RETRIEVE(P, L): return value of element at P position
+/** retrieve(P, L): return value of element at P position
  * @ params:
  * - Position P
  * - List L
  * @ return: (ElementType)
  */
-ElementType RETRIEVE(const Position P, const List L) {
+ElementType retrieve(const Position P, const List L) {
     return L.Element[P - 1];
 }
 
-/** LOCATE(X, L): return position of X element
+/** locate(X, L): return position of X element
  * @ params:
  * - ElementType X
  * - List X
  * @ return: Position if found else return end_list position
  */
-Position LOCATE(const ElementType X, const List L) {
-    Position p = FIRST_LIST(L);
+Position locate(const ElementType X, const List L) {
+    Position p = first_list(L);
 
-    while (p != END_LIST(L)) {
-        if (RETRIEVE(p, L) == X) {
+    while (p != end_list(L)) {
+        if (retrieve(p, L) == X) {
             break;
         }
-        p = NEXT(p, L);
+        p = next(p, L);
     }
     return p;
 }
 
-/** SHOW_ALL(L): display all element in list to screen
+/** show_all(L): display all element in list to screen
  * @ params: List L
  * @ return: (void)
  */
-void SHOW_ALL(const List L) {
-    Position p = FIRST_LIST(L);
+void show_all(const List L) {
+    Position p = first_list(L);
     printf("[ ");
-    while (p != END_LIST(L)) {
-        printf("%d ", RETRIEVE(p, L));
-        p = NEXT(p, L);
+    while (p != end_list(L)) {
+        printf("%d ", retrieve(p, L));
+        p = next(p, L);
     }
     printf("]\n");
 }
@@ -218,23 +224,23 @@ void SHOW_ALL(const List L) {
 void demo(void) {
     List L;
     /* MAKE NULL LIST */
-    MAKENULL_LIST(&L);
+    makenull_list(&L);
 
     /* INSERT NEW ELEMENT TO LIST */
     printf("============ INSERT ============\n");
-    INSERT_LIST(5, 1, &L);
-    INSERT_LIST(7, 2, &L);
-    INSERT_LIST(6, 3, &L);
-    INSERT_LIST(8, 4, &L);
+    insert_list(5, 1, &L);
+    insert_list(7, 2, &L);
+    insert_list(6, 3, &L);
+    insert_list(8, 4, &L);
 
     /* SHOW ALL */
-    SHOW_ALL(L);
+    show_all(L);
 
     /* DELETE SOME ELEMENTS BASE ON VALUES */
     printf("============ DELETE ============\n");
-    DELETE_LIST(LOCATE(5, L), &L);
-    DELETE_LIST(LOCATE(8, L), &L);
+    delete_list(locate(5, L), &L);
+    delete_list(locate(8, L), &L);
 
     /* SHOW ALL */
-    SHOW_ALL(L);
+    show_all(L);
 }
