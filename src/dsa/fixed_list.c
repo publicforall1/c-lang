@@ -7,10 +7,6 @@
  *
  * @ Marcos:
  * - capacity: capacity of list
- * - ERROR_INVALID_POSITION: error message (when user function like insert,
- * delete)
- * - ERROR_THIS_LIST_IS_EMPTY: error message (function: delete)
- * - ERROR_LIST_IS_FULL: error message (function: insert)
  *
  * @ Properties:
  * - Element[capacity]: is an array of element with ElementType
@@ -44,9 +40,6 @@
 #include <stdio.h>
 
 #define capacity 10
-#define ERROR_INVALID_POSITION "Invalid position.\n"
-#define ERROR_THIS_LIST_IS_EMPTY "This list is empty.\n"
-#define ERROR_LIST_IS_FULL "List is full.\n"
 
 typedef int ElementType;
 typedef int Position;
@@ -113,13 +106,13 @@ int end_list(const List L) { return L.length + 1; }
 void insert_list(const ElementType X, const Position P, List* L) {
     /* check is reached max length */
     if (L->length == capacity) {
-        printf(ERROR_LIST_IS_FULL);
+        printf("insert list: list is full.\n");
         return;
     }
 
     /* check is valid position */
     if (P < 1 || P > L->length + 1) {
-        printf(ERROR_INVALID_POSITION);
+        printf("insert list: invalid position.\n");
         return;
     }
 
@@ -144,13 +137,13 @@ void insert_list(const ElementType X, const Position P, List* L) {
 void delete_list(const Position P, List* L) {
     /* check is empty list */
     if (is_empty_list(*L)) {
-        printf(ERROR_THIS_LIST_IS_EMPTY);
+        printf("delete list: list is empty.\n");
         return;
     }
 
     /* check is valid position */
     if (P < 1 || P > L->length) {
-        printf(ERROR_INVALID_POSITION);
+        printf("delete list: invalid position.\n");
         return;
     }
 
