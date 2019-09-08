@@ -13,6 +13,7 @@
 - [Intersection two sets of integers](./src/arrays/intersection.c)
 - [Delete Element by Value](./src/arrays/array_delete.c)
 - [Selection Sort](./src/arrays/selection_sort.c)
+- [Binary Search](./src/arrays/binary_search.c)
 
 ## # Others
 - [Order List Of String By First Name](./src/others/order_str.c)
