@@ -22,6 +22,7 @@
 
 ## # Data structures
 - [Fixed List](./src/dsa/fixed_list.c)
+- [Singly-Linked Lists](./src/dsa/sll.c)
 ___
 
 :love_letter: Report any issue via our [Telegram](https://t.me/taiprogramer)
