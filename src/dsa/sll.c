@@ -56,8 +56,8 @@ sllnode* insert(sllnode* head, ElementType val) {
     sllnode* node = (sllnode*)malloc(sizeof(sllnode));
 
     if (!node) {
-        printf("insert: out of memory, return NULL.\n");
-        return NULL;
+        printf("insert: out of memory, return 'head' pointer.\n");
+        return head;
     }
 
     node->val = val;
