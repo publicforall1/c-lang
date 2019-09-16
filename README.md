@@ -21,9 +21,10 @@
 - [The Next Day](./src/others/the_next_day.c)
 
 ## # Data structures
-- [Fixed List](./src/dsa/fixed_list.c)
-- [Singly-Linked Lists](./src/dsa/sll.c)
-- [Singly-Linked Lists (Compatible)](./src/dsa/sll_compatible.c)
+- [Fixed List](./src/dsa/FixedList/fixed_list.c)
+- [Singly-Linked Lists](./src/dsa/SLL/sll.c)
+- [Singly-Linked Lists (Compatible)](./src/dsa/SLL/sll_compatible.c)
+- [Stack](./src/dsa/Stack/stack.c)
 
 ___
 
