@@ -5,14 +5,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-
-#define CAPACITY 6
-
-typedef int ElementType;
-typedef struct {
-    ElementType value[CAPACITY];
-    int top;
-} Stack;
+#include "stack.h"
 
 void makenull_stack(Stack* stack){
     stack->top = CAPACITY;
