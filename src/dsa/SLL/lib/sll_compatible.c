@@ -16,16 +16,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef int ElementType;
-
-typedef struct sllist {
-    ElementType val;
-    struct sllist* next;
-} sllnode;
-
-typedef sllnode* Position;
-typedef sllnode* List;
+#include "sll_compatible.h"
 
 void makenull_list(List* header) {
     sllnode* node = (sllnode*)malloc(sizeof(sllnode));
@@ -39,9 +30,7 @@ void makenull_list(List* header) {
 }
 
 bool is_empty(List header) {
-    if (header->next == NULL)
-        return true;
-    return false;
+    return header->next == NULL;
 }
 
 Position locate(ElementType lookup_value, List header) {
@@ -114,13 +103,3 @@ void show_all(List header) {
     printf("]\n");
 }
 
-int demo() {
-    List header;
-    int number_element_of_list = 4;
-    read_list(&header, number_element_of_list);
-    show_all(header);
-    destroy_list(header);
-    return 0;
-}
-
-int main(void) { return demo(); }

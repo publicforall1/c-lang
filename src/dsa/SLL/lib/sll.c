@@ -13,13 +13,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef int ElementType;
-
-typedef struct sllist {
-    ElementType val;
-    struct sllist* next;
-} sllnode;
+#include "sll.h"
 
 sllnode* create(ElementType val) {
     /**
@@ -72,4 +66,3 @@ void destroy(sllnode* head) {
     free(head);
 }
 
-int main(void) { return 0; }
