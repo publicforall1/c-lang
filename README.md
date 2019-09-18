@@ -25,6 +25,7 @@
 - [Singly-Linked Lists](./src/dsa/SLL/lib/sll.c)
 - [Singly-Linked Lists (Compatible)](./src/dsa/SLL/lib/sll_compatible.c)
 - [Stack](./src/dsa/Stack/lib/stack.c)
+- [[Stack Application] Valid Parentheses](./src/dsa/Stack/parentheses.c)
 
 ___
 
