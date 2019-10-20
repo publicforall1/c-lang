@@ -28,6 +28,7 @@
 - [[Stack Application] Valid Parentheses](./src/dsa/Stack/parentheses.c)
 - [Queue](./src/dsa/Queue/lib/queue.c)
 - [Tree](./src/dsa/Tree/)
+- [Binary Tree](./src/dsa/BinaryTree/)
 
 ___
 
