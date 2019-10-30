@@ -29,6 +29,7 @@
 - [Queue](./src/dsa/Queue/lib/queue.c)
 - [Tree](./src/dsa/Tree/)
 - [Binary Tree](./src/dsa/BinaryTree/)
+- [Binary Search Tree](./src/dsa/BinarySearchTree/)
 
 ___
 
