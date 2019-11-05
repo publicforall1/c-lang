@@ -5,9 +5,10 @@
  * Data: ../shared/Ban_hang.txt
  * Telegram: t.me/taiprogramer
  * Comment: Được viết bằng cả trái tim của một anh chàng rất đẹp trai!
- * Lasted Update: 16:56, 26/04/2019, Viet Nam
+ * Last Updated: 22:03, 05/11/2019, Viet Nam
  *  - Change Code Style -> Clean Code
  *  - Errors Handler -> Good Program
+ *  - Type casting (void* -> hanghoa*): from malloc()
  * Contributions:
  *  - ...
  */
@@ -49,7 +50,7 @@ hanghoa* read_from_file(int* tongSoHangHoa, const char* fileName) {
     hanghoa* temp_ptr = NULL;
     char str_buffer[200];
     if (file) {
-        listHangHoa = malloc(sizeof(hanghoa));
+        listHangHoa = (hanghoa*) malloc(sizeof(hanghoa));
         /*============ NULL CHECK ============*/
         if (!listHangHoa) {
             printf("Can not malloc for 1 hang hoa.\n");
