@@ -24,7 +24,7 @@
 - [Fixed List](./src/dsa/FixedList/lib/fixed_list.c)
 - [Singly-Linked Lists](./src/dsa/SLL/lib/sll.c)
 - [Singly-Linked Lists (Compatible)](./src/dsa/SLL/lib/sll_compatible.c)
-- [Stack](./src/dsa/Stack/lib/stack.c)
+- [Stack](./src/dsa/Stack/)
 - [[Stack Application] Valid Parentheses](./src/dsa/Stack/parentheses.c)
 - [Queue](./src/dsa/Queue/lib/queue.c)
 - [Tree](./src/dsa/Tree/)
