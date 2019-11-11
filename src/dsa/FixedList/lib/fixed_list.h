@@ -3,25 +3,30 @@
 
 #include <stdbool.h>
 
-#define capacity 10
+#define MAX_LENGTH_OF_FIXED_LIST 100
 
-typedef int ElementType;
-typedef int Position;
-typedef struct {
-    ElementType Element[capacity];
+typedef int Fixed_List_ElementType;
+typedef int Fixed_List_Position;
+typedef struct FixedList {
+    Fixed_List_ElementType Element[MAX_LENGTH_OF_FIXED_LIST];
     int length;
-} List;
+} FixedList;
 
-bool is_empty_list(const List);
-ElementType retrieve(const Position, const List);
-void show_all(const List);
-void makenull_list(List*);
-void insert_list(const ElementType, const Position, List*);
-void delete_list(const Position, List*);
-Position first_list(const List);
-Position end_list(const List);
-Position previous(const Position, const List);
-Position next(const Position, const List);
-Position locate(const ElementType, const List);
+bool is_empty_list(const FixedList);
+Fixed_List_ElementType retrieve_from_list(const Fixed_List_Position,
+                                          const FixedList);
+void show_all_list(const FixedList);
+void makenull_list(FixedList*);
+void insert_to_list(const Fixed_List_ElementType, const Fixed_List_Position,
+                    FixedList*);
+void delete_from_list(const Fixed_List_Position, FixedList*);
+Fixed_List_Position first_list(const FixedList);
+Fixed_List_Position end_list(const FixedList);
+Fixed_List_Position previous_position_of(const Fixed_List_Position,
+                                         const FixedList);
+Fixed_List_Position next_position_of(const Fixed_List_Position,
+                                     const FixedList);
+Fixed_List_Position locate_element_of_list(const Fixed_List_ElementType,
+                                           const FixedList);
 
 #endif
