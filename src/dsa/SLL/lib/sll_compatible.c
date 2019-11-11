@@ -4,21 +4,22 @@
  * @ Support functions:
  * - makenull_list: create empty list (1 block = header of list)
  * - is_empty_list: look at its name :D
- * - locate: find position of element (address)
- * - insert_list: insert element to list
- * - delete_list: delete element from list
+ * - first_list: return first position (address) of list
+ * - locate_element_of_list: find position of element (address)
+ * - insert_to_list: insert element to list
+ * - delete_from_list: delete element from list
  * - destroy_list: delete entire list, include free memory
  * - read_list: read input & add to list
- * - show_all: show all elements of list
+ * - show_all_list: show all elements of list
  *
  */
 
+#include "sll_compatible.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "sll_compatible.h"
 
-void makenull_list(List* header) {
+void makenull_list(SinglyLinkedList* header) {
     sllnode* node = (sllnode*)malloc(sizeof(sllnode));
     if (!node) {
         printf(
@@ -29,13 +30,16 @@ void makenull_list(List* header) {
     *header = node;
 }
 
-bool is_empty(List header) {
-    return header->next == NULL;
-}
+bool is_empty(SinglyLinkedList header) { return header->next == NULL; }
 
-Position locate(ElementType lookup_value, List header) {
+SinglyLinkedList_Position first_list(SinglyLinkedList header) { return header; }
+
+SinglyLinkedList_Position
+locate_element_of_list(SinglyLinkedList_ElementType lookup_value,
+                       SinglyLinkedList header) {
     /**
-     * @return Position (address) of previous block if found, // ++
+     * @return SinglyLinkedList_Position (address) of previous block if found,
+     * // ++
      * // ++ else return NULL;
      */
 
@@ -51,10 +55,11 @@ Position locate(ElementType lookup_value, List header) {
     return NULL;
 }
 
-void insert_list(ElementType value, Position P, List* header) {
+void insert_to_list(SinglyLinkedList_ElementType value,
+                    SinglyLinkedList_Position P, SinglyLinkedList* header) {
     sllnode* node = (sllnode*)malloc(sizeof(sllnode));
     if (!node) {
-        printf("insert_list: out of memory, do nothing.\n");
+        printf("insert_to_list: out of memory, do nothing.\n");
         return;
     }
 
@@ -63,7 +68,7 @@ void insert_list(ElementType value, Position P, List* header) {
     P->next = node;
 }
 
-void delete_list(Position P, List* header) {
+void delete_from_list(SinglyLinkedList_Position P, SinglyLinkedList* header) {
     /**
      * @description: delete next block of P position
      *
@@ -75,25 +80,22 @@ void delete_list(Position P, List* header) {
     free(next_block);
 }
 
-void destroy_list(List header) {
+void destroy_list(SinglyLinkedList header) {
     if (header->next != NULL)
         destroy_list(header->next);
     free(header);
 }
 
-void read_list(List* header, int number_of_element) {
-    makenull_list(header);
-    int i = 0, input_value;
-    while (i < number_of_element) {
+void read_list(SinglyLinkedList* header, int number_of_element) {
+    int i = -1, input_value;
+    while (++i < number_of_element) {
         printf("Enter value #%d: ", i + 1);
         scanf("%d", &input_value);
-        fflush(stdin);
-        insert_list(input_value, *header, header);
-        ++i;
+        insert_to_list(input_value, first_list(*header), header);
     }
 }
 
-void show_all(List header) {
+void show_all_list(SinglyLinkedList header) {
     sllnode* trav = header->next;
     printf("[ ");
     while (trav) {
@@ -102,4 +104,3 @@ void show_all(List header) {
     }
     printf("]\n");
 }
-

@@ -3,24 +3,27 @@
 
 #include <stdbool.h>
 
-typedef int ElementType;
+typedef int SinglyLinkedList_ElementType;
 
 typedef struct sllist {
-    ElementType val;
+    SinglyLinkedList_ElementType val;
     struct sllist* next;
 } sllnode;
 
-typedef sllnode* Position;
-typedef sllnode* List;
+typedef sllnode* SinglyLinkedList_Position;
+typedef sllnode* SinglyLinkedList;
 
-void makenull_list(List* header);
-bool is_empty(List header);
-Position locate(ElementType lookup_value, List header);
-void insert_list(ElementType value, Position P, List* header);
-void delete_list(Position P, List* header);
-void destroy_list(List header);
-void read_list(List* header, int number_of_element);
-void show_all(List header);
+void makenull_list(SinglyLinkedList* header);
+bool is_empty_list(SinglyLinkedList header);
+SinglyLinkedList_Position first_list(SinglyLinkedList header);
+SinglyLinkedList_Position
+locate_element_of_list(SinglyLinkedList_ElementType lookup_value,
+                       SinglyLinkedList header);
+void insert_to_list(SinglyLinkedList_ElementType value,
+                    SinglyLinkedList_Position P, SinglyLinkedList* header);
+void delete_from_list(SinglyLinkedList_Position P, SinglyLinkedList* header);
+void destroy_list(SinglyLinkedList header);
+void read_list(SinglyLinkedList* header, int number_of_element);
+void show_all_list(SinglyLinkedList header);
 
 #endif
-
