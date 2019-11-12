@@ -5,5 +5,5 @@
 ${prog}: ${prog}.c
 	gcc ${prog}.c lib/stack.c \
 	-std=c11 -fstack-protector -pedantic-errors -Wunused-variable -lm \
-	-o ${prog}
+	-o ${prog}.out
 

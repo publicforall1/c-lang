@@ -8,13 +8,13 @@
 
 #include <stdio.h>
 
-int main(void){
+int main(void) {
     Stack my_stack;
     makenull_stack(&my_stack);
 
     int number_of_element = 10;
-    for(int i = 0; i < number_of_element; ++i){
-	push(i * 10,&my_stack); 
+    for (int i = 0; i < number_of_element; ++i) {
+        push_stack(i * 10, &my_stack);
     }
 
     print_stack(my_stack);
