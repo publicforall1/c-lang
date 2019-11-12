@@ -3,51 +3,46 @@
  * - save on stack memory in RAM (static allocation)
  * */
 
-#include <stdio.h>
-#include <stdbool.h>
 #include "stack.h"
+#include <stdbool.h>
+#include <stdio.h>
 
-void makenull_stack(Stack* stack){
-    stack->top = CAPACITY;
+void makenull_stack(Stack* stack) { stack->top_index = MAX_LENGTH_OF_STACK; }
+
+bool is_empty_stack(Stack stack) {
+    return stack.top_index == MAX_LENGTH_OF_STACK;
 }
 
-bool is_empty_stack(Stack stack){
-    return stack.top == CAPACITY;
-}
+bool is_full_stack(Stack stack) { return stack.top_index == 0; }
 
-bool is_full_stack(Stack stack){
-    return stack.top == 0;
-}
-
-void push(ElementType value, Stack* stack){
-    if (is_full_stack(*stack)){
-	printf("push: stack is full.\n");
-	return;
+void push_stack(Stack_ElementType value, Stack* stack) {
+    if (is_full_stack(*stack)) {
+        printf("push_stack: stack is full.\n");
+        return;
     }
 
-    stack->top--;
-    stack->value[stack->top] = value;
+    stack->top_index--;
+    stack->value[stack->top_index] = value;
 }
 
-void pop(Stack* stack){
-    if (is_empty_stack(*stack)){
-	printf("pop: stack is empty.\n");
-	return;
+void pop_stack(Stack* stack) {
+    if (is_empty_stack(*stack)) {
+        printf("pop_stack: stack is empty.\n");
+        return;
     }
 
-    stack->top++;
+    stack->top_index++;
 }
 
-ElementType top(Stack stack){
-    return stack.value[stack.top];
+Stack_ElementType top_stack(Stack stack) {
+    return stack.value[stack.top_index];
 }
 
-void print_stack(Stack stack){
-    Stack copied_stack = stack;
+void print_stack(Stack stack) {
     printf("[ ");
-    while(!is_empty_stack(copied_stack)){
-	printf("%d ", top(copied_stack));
-	pop(&copied_stack);
+    while (!is_empty_stack(stack)) {
+        printf("%d ", top_stack(stack));
+        pop_stack(&stack);
     }
     printf("]");
 }
