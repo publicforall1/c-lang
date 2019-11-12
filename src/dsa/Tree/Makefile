@@ -5,5 +5,5 @@
 ${prog}: ${prog}.c lib/tree.c
 	gcc ${prog}.c lib/tree.c \
 	-std=c11 -fstack-protector -pedantic-errors -Wunused-variable -lm \
-	-o ${prog}
+	-o ${prog}.out
 
