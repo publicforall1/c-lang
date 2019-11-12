@@ -1,91 +1,87 @@
 #include "tree.h"
 #include <stdio.h>
 
-void makenull_tree(Tree* tree){
-    tree->number_of_nodes = 0;
-}
+void makenull_tree(Tree* tree) { tree->number_of_nodes = 0; }
 
-bool is_empty_tree(Tree tree){
-    return tree.number_of_nodes == 0;
-}
+bool is_empty_tree(Tree tree) { return tree.number_of_nodes == 0; }
 
-Node root_node(Tree tree){
+Tree_Node tree_root_node(Tree tree) {
     if (is_empty_tree(tree))
-	return NIL;
+        return TREE_NIL;
     return 0;
-    // return !is_empty_tree(tree) + NIL; -> magical code
+    // return !is_empty_tree(tree) + TREE_NIL; -> magical code
 }
 
-DataType get_value(Node node, Tree tree){
-    if (node >= tree.number_of_nodes)
-	return NIL;
+Tree_DataType get_value_from_tree(Tree_Node node, Tree tree) {
+    if (node >= tree.number_of_nodes || node == TREE_NIL)
+        return '\0';
     return tree.labels[node];
 }
 
-void add_node(DataType value, Node parent, Tree* tree){
+void add_node_to_tree(Tree_DataType value, Tree_Node tree_parent_of,
+                      Tree* tree) {
     tree->labels[tree->number_of_nodes] = value;
-    tree->parents[tree->number_of_nodes] = parent;
+    tree->parents[tree->number_of_nodes] = tree_parent_of;
     tree->number_of_nodes++;
 }
 
-Node parent(Node node, Tree tree){
+Tree_Node tree_parent_of(Tree_Node node, Tree tree) {
     if (is_empty_tree(tree) || tree.number_of_nodes == 1)
-	return NIL;
+        return TREE_NIL;
     return tree.parents[node];
 }
 
-Node left_child(Node node, Tree tree){
-    Node checking_node = node;
-    while(++node < tree.number_of_nodes)
-	if (parent(node, tree) == checking_node)
-	    return node;
-    return NIL;
+Tree_Node tree_left_child_of(Tree_Node node, Tree tree) {
+    Tree_Node checking_node = node;
+    while (++node < tree.number_of_nodes)
+        if (tree_parent_of(node, tree) == checking_node)
+            return node;
+    return TREE_NIL;
 }
 
-Node right_sibling(Node node, Tree tree){
-    Node parent_of_checking_node = parent(node, tree);
-    while(++node < tree.number_of_nodes)
-	if (parent(node, tree) == parent_of_checking_node)
-	    return node;
-    return NIL;
+Tree_Node tree_right_sibling_of(Tree_Node node, Tree tree) {
+    Tree_Node parent_of_checking_node = tree_parent_of(node, tree);
+    while (++node < tree.number_of_nodes)
+        if (tree_parent_of(node, tree) == parent_of_checking_node)
+            return node;
+    return TREE_NIL;
 }
 
-void preorder(Node root, Tree tree){
-    // argument notes: must pass root_node
-    // preorder: root -> left-child -> right-sibling
-    if (root == NIL)
-	return;
+void preorder_tree(Tree_Node root, Tree tree) {
+    // argument notes: must pass tree_root_node
+    // preorder_tree: root -> left-child -> right-sibling
+    if (root == TREE_NIL)
+        return;
 
-    printf("%c ", get_value(root, tree));
-    preorder(left_child(root, tree), tree);
-    preorder(right_sibling(root, tree), tree);
+    printf("%c ", get_value_from_tree(root, tree));
+    preorder_tree(tree_left_child_of(root, tree), tree);
+    preorder_tree(tree_right_sibling_of(root, tree), tree);
 }
 
-void inorder(Node root, Tree tree){
-    // argument notes: must pass root_node
-    // inorder: left-child -> root -> right-sibling
-    if (root == NIL)
-	return;
+void inorder_tree(Tree_Node root, Tree tree) {
+    // argument notes: must pass tree_root_node
+    // inorder_tree: left-child -> root -> right-sibling
+    if (root == TREE_NIL)
+        return;
 
-    inorder(left_child(root, tree), tree);
-    Node left = left_child(root, tree);
-    if (left == NIL)
-        printf("%c ", get_value(root, tree));
-    Node parent_of_root = parent(root, tree);
-    if (root == left_child(parent_of_root, tree))
-	printf("%c ", get_value(parent_of_root, tree));
+    inorder_tree(tree_left_child_of(root, tree), tree);
+    Tree_Node left = tree_left_child_of(root, tree);
+    if (left == TREE_NIL)
+        printf("%c ", get_value_from_tree(root, tree));
+    Tree_Node parent_of_root = tree_parent_of(root, tree);
+    if (root == tree_left_child_of(parent_of_root, tree))
+        printf("%c ", get_value_from_tree(parent_of_root, tree));
 
-    inorder(right_sibling(root, tree), tree);
+    inorder_tree(tree_right_sibling_of(root, tree), tree);
 }
 
-void postorder(Node root, Tree tree){
-    // argument notes: must pass root_node
-    // inorder: left-child -> right-sibling -> root
-    if (root == NIL)
-	return;
+void postorder_tree(Tree_Node root, Tree tree) {
+    // argument notes: must pass tree_root_node
+    // postorder: left-child -> right-sibling -> root
+    if (root == TREE_NIL)
+        return;
 
-    postorder(left_child(root, tree), tree);
-    printf("%c ", get_value(root, tree));
-    postorder(right_sibling(root, tree), tree);
+    postorder_tree(tree_left_child_of(root, tree), tree);
+    printf("%c ", get_value_from_tree(root, tree));
+    postorder_tree(tree_right_sibling_of(root, tree), tree);
 }
-

@@ -3,31 +3,30 @@
 
 #include <stdbool.h>
 
-#define MAX_LENGTH 100
-#define NIL -1
+#define MAX_NODE_OF_TREE 100
+#define TREE_NIL -1
 
-typedef char DataType;
-typedef int Node;
+typedef char Tree_DataType;
+typedef int Tree_Node;
 
 typedef struct {
-    Node parents[MAX_LENGTH];
-    DataType labels[MAX_LENGTH];
+    Tree_Node parents[MAX_NODE_OF_TREE];
+    Tree_DataType labels[MAX_NODE_OF_TREE];
     int number_of_nodes;
 } Tree;
 
 bool is_empty_tree(Tree tree);
 void makenull_tree(Tree* tree);
-void add_node(DataType value, Node parent, Tree* tree);
-DataType get_value(Node node, Tree tree);
+void add_node_to_tree(Tree_DataType value, Tree_Node parent, Tree* tree);
+Tree_DataType get_value_from_tree(Tree_Node node, Tree tree);
 
-Node root_node(Tree tree);
-Node parent(Node node, Tree tree);
-Node left_child(Node node, Tree tree);
-Node right_sibling(Node node, Tree tree);
+Tree_Node tree_root_node(Tree tree);
+Tree_Node tree_parent_of(Tree_Node node, Tree tree);
+Tree_Node tree_left_child_of(Tree_Node node, Tree tree);
+Tree_Node tree_right_sibling_of(Tree_Node node, Tree tree);
 
-void preorder(Node node, Tree tree);
-void inorder(Node node, Tree tree);
-void postorder(Node node, Tree tree);
+void preorder_tree(Tree_Node root, Tree tree);
+void inorder_tree(Tree_Node root, Tree tree);
+void postorder_tree(Tree_Node root, Tree tree);
 
 #endif
-
