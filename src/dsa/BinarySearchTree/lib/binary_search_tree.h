@@ -3,26 +3,25 @@
 
 #include <stdbool.h>
 
-typedef int KeyType;
+typedef int BS_Tree_KeyType;
 
-struct Node {
-    KeyType value;
-    struct Node* left;
-    struct Node* right;
+struct BS_Tree_Node {
+    BS_Tree_KeyType value;
+    struct BS_Tree_Node* left;
+    struct BS_Tree_Node* right;
 };
 
-typedef struct Node* BS_Tree;
+typedef struct BS_Tree_Node* BS_Tree;
 
 void makenull_bstree(BS_Tree*);
 bool is_empty_bstree(BS_Tree);
-void insert_node(KeyType, BS_Tree*);
+void insert_node_to_bstree(BS_Tree_KeyType, BS_Tree*);
 void destroy_bstree(BS_Tree);
-BS_Tree search(KeyType, BS_Tree);
-KeyType delete_max_node(BS_Tree*);
-void delete_node(KeyType, BS_Tree*);
+BS_Tree search_in_bstree(BS_Tree_KeyType, BS_Tree);
+BS_Tree_KeyType delete_max_node_from_bstree(BS_Tree*);
+void delete_node_from_bstree(BS_Tree_KeyType, BS_Tree*);
 void preorder_bstree(BS_Tree);
 void inorder_bstree(BS_Tree);
 void postorder_bstree(BS_Tree);
 
 #endif
-
