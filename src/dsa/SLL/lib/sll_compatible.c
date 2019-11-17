@@ -30,7 +30,7 @@ void makenull_list(SinglyLinkedList* header) {
     *header = node;
 }
 
-bool is_empty(SinglyLinkedList header) { return header->next == NULL; }
+bool is_empty_list(SinglyLinkedList header) { return header->next == NULL; }
 
 SinglyLinkedList_Position first_list(SinglyLinkedList header) { return header; }
 
