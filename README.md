@@ -30,6 +30,3 @@
 - [Binary Tree](./src/dsa/BinaryTree/)
 - [Binary Search Tree](./src/dsa/BinarySearchTree/)
 
-___
-
-:love_letter: Report any issue via our [Telegram](https://t.me/taiprogramer)
