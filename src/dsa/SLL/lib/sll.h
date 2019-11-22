@@ -1,18 +1,30 @@
-#ifndef SLL_H
-#define SLL_H
+#ifndef SLL_COMPATIBLE_H
+#define SLL_COMPATIBLE_H
 
 #include <stdbool.h>
 
-typedef int ElementType;
+typedef int SinglyLinkedList_ElementType;
 
 typedef struct sllist {
-    ElementType val;
+    SinglyLinkedList_ElementType val;
     struct sllist* next;
 } sllnode;
 
-sllnode* create(ElementType val);
-bool is_exist(sllnode* head, ElementType lookup_value);
-sllnode* insert(sllnode* head, ElementType val);
-void destroy(sllnode* head);
+typedef sllnode* SinglyLinkedList_Position;
+typedef sllnode* SinglyLinkedList;
+
+void makenull_list(SinglyLinkedList* header);
+bool is_empty_list(SinglyLinkedList header);
+SinglyLinkedList_Position first_list(SinglyLinkedList header);
+SinglyLinkedList_Position end_list(SinglyLinkedList header);
+SinglyLinkedList_Position
+locate_element_of_list(SinglyLinkedList_ElementType lookup_value,
+                       SinglyLinkedList header);
+void insert_to_list(SinglyLinkedList_ElementType value,
+                    SinglyLinkedList_Position P, SinglyLinkedList* header);
+void delete_from_list(SinglyLinkedList_Position P, SinglyLinkedList* header);
+void destroy_list(SinglyLinkedList header);
+SinglyLinkedList_ElementType list_value_at(SinglyLinkedList_Position P, SinglyLinkedList header);
+void show_all_list(SinglyLinkedList header);
 
 #endif

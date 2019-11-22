@@ -1,4 +1,4 @@
-#include "lib/sll_compatible.h"
+#include "lib/sll.h"
 #include <stdio.h>
 
 int main(void) {
@@ -8,10 +8,10 @@ int main(void) {
 
     /* INSERT NEW ELEMENT TO LIST */
     printf("============ INSERT ============\n");
-    insert_to_list(5, first_list(L), &L);
-    insert_to_list(7, first_list(L), &L);
-    insert_to_list(6, first_list(L), &L);
-    insert_to_list(8, first_list(L), &L);
+    insert_to_list(5, end_list(L), &L);
+    insert_to_list(7, end_list(L), &L);
+    insert_to_list(6, end_list(L), &L);
+    insert_to_list(8, end_list(L), &L);
 
     /* SHOW ALL */
     show_all_list(L);
@@ -28,3 +28,4 @@ int main(void) {
     destroy_list(L);
     return 0;
 }
+
