@@ -25,7 +25,7 @@
 - [Singly-Linked Lists](./src/dsa/SLL/)
 - [Stack](./src/dsa/Stack/)
 - [[Stack Application] Valid Parentheses](./src/dsa/Stack/parentheses.c)
-- [Queue](./src/dsa/Queue/lib/queue.c)
+- [Queue](./src/dsa/Queue/)
 - [Tree](./src/dsa/Tree/)
 - [Binary Tree](./src/dsa/BinaryTree/)
 - [Binary Search Tree](./src/dsa/BinarySearchTree/)
