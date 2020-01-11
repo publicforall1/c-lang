@@ -30,6 +30,7 @@
 - [Tree](./src/dsa/Tree/)
 - [Binary Tree](./src/dsa/BinaryTree/)
 - [Binary Search Tree](./src/dsa/BinarySearchTree/)
+- [Graph: Simple Undirected Graph using matrix of vertices - edges](./src/dsa/Graph/)
 
 [Download all latest libraries as zip file](https://github.com/publicforall1/learn-c-lang/releases/tag/v11.12.2019-shared)
 
