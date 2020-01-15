@@ -1,9 +1,9 @@
 # -*- Makefile -*-
 # Compile Instruction:
-# 	make prog=[filename_without_extension]
+# 	make prog=[filename_without_extension] type=[type_of_graph]
 
-${prog}: ${prog}.c
-	gcc ${prog}.c lib/vertices_edges_graph.c \
+${prog}: ${prog}.c lib/${type}_graph.c
+	gcc ${prog}.c lib/${type}_graph.c \
 	-std=c11 -fstack-protector -pedantic-errors -Wunused-variable -lm \
 	-o ${prog}.out
 
