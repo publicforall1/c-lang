@@ -1,4 +1,7 @@
 // Implementing Simple Undirected Graph using Matrix of Vertices - Edges
+// Properties:
+//     - Simple undirected graph/multigraph
+//     - No self-loop
 
 #include "vertices_edges_graph.h"
 #include "assert.h"
