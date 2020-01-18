@@ -19,3 +19,13 @@
 (*): Not implement yet
 
 > [See implementation](./lib/vertices_vertices_graph.c)
+
+## Using list of adjacents
+- Properties:
+    - Directed/Undirected(*) graph
+    - Simple/Multigraph
+    - Self-loop
+
+(*): Not implement yet
+
+> [See implementation](./lib/list_adjacent_graph.c)
