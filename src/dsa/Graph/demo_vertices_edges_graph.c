@@ -1,0 +1,40 @@
+#include "assert.h"
+#include "lib/vertices_edges_graph.h"
+#include <stdio.h>
+
+/* Undirected - Graph
+1 - 2
+| \ |
+3 - 4
+*/
+
+Graph setup_graph();
+
+int main(void) {
+    printf("Test vertices - edges graph");
+    Graph g = setup_graph();
+
+    assert(degree(g, 1) == 3);
+    assert(degree(g, 2) == 2);
+    assert(degree(g, 3) == 2);
+    assert(degree(g, 4) == 3);
+
+    assert(is_adjacent(g, 1, 2) == 1);
+    assert(is_adjacent(g, 2, 1) == 1);
+    assert(is_adjacent(g, 2, 3) == 0);
+    assert(is_adjacent(g, 2, 4) == 1);
+    assert(is_adjacent(g, 4, 2) == 1);
+    printf(" -> Done\n");
+    return 0;
+}
+
+Graph setup_graph() {
+    Graph g;
+    init_graph(&g, 4, 5);
+    add_edge(&g, 1, 1, 2);
+    add_edge(&g, 2, 1, 3);
+    add_edge(&g, 3, 1, 4);
+    add_edge(&g, 4, 2, 4);
+    add_edge(&g, 5, 3, 4);
+    return g;
+}

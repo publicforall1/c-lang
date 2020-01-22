@@ -1,7 +1,7 @@
 #ifndef LIST_ADJACENT_GRAPH
 #define LIST_ADJACENT_GRAPH
 
-#include "list.h"
+#include "list/list.h"
 #define MAX_NUMBER_OF_VERTICES 100
 
 typedef struct {

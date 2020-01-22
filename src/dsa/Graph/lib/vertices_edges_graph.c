@@ -2,35 +2,36 @@
 // Properties:
 //     - Simple undirected graph/multigraph
 //     - No self-loop
+//
+//   E d g e
+// V 0 0 0 0
+// e 0 0 0 0
+// r 0 0 0 0
+// t 0 0 0 0
+// e 0 0 0 0
+// x 0 0 0 0
 
 #include "vertices_edges_graph.h"
-#include "assert.h"
 
 void init_graph(Graph* G, int vertices, int edges) {
     G->number_of_vertices = vertices;
     G->number_of_edges = edges;
 
-    for (int i = 0; i < vertices; ++i) {
-        for (int j = 0; j < edges; ++j) {
+    for (int i = 1; i <= vertices; ++i) {
+        for (int j = 1; j <= edges; ++j) {
             G->graph[i][j] = 0;
         }
     }
 }
 
 void add_edge(Graph* G, int edge, int vertex1, int vertex2) {
-    // Turn data to real index (array index count from 0)
-    --vertex1;
-    --vertex2;
-    --edge;
     G->graph[vertex1][edge] = 1;
     G->graph[vertex2][edge] = 1;
 }
 
 int is_adjacent(Graph G, int vertex1, int vertex2) {
-    --vertex1;
-    --vertex2;
     int ajacent = 0;
-    for (int i = 0; i < G.number_of_edges; ++i) {
+    for (int i = 1; i <= G.number_of_edges; ++i) {
         if (G.graph[vertex1][i] == 1 && G.graph[vertex2][i] == 1) {
             ajacent = 1;
         }
@@ -39,9 +40,8 @@ int is_adjacent(Graph G, int vertex1, int vertex2) {
 }
 
 int degree(Graph G, int vertex) {
-    --vertex;
     int d = 0;
-    for (int i = 0; i < G.number_of_edges; ++i) {
+    for (int i = 0; i <= G.number_of_edges; ++i) {
         if (G.graph[vertex][i] == 1) {
             ++d;
         }
