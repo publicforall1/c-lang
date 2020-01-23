@@ -31,6 +31,7 @@
 - [Binary Tree](./src/dsa/BinaryTree/)
 - [Binary Search Tree](./src/dsa/BinarySearchTree/)
 - [Graph](./src/dsa/Graph/)
+- [Heap Sort](./src/dsa/HeapSort/)
 
 [Download all latest libraries as zip file](https://github.com/publicforall1/learn-c-lang/releases/tag/v11.12.2019-shared)
 
