@@ -14,3 +14,8 @@ make prog=$demo3 type=list_adjacent
 ./$demo1.out
 ./$demo2.out
 ./$demo3.out
+
+# Clean up
+rm $demo1.out
+rm $demo2.out
+rm $demo3.out

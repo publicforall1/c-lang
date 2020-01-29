@@ -48,3 +48,27 @@ int degree(Graph G, int vertex) {
     }
     return d;
 }
+
+List get_adjacents(Graph G, int vertex) {
+    List adjacents;
+    init_list(&adjacents);
+    int temp[G.number_of_vertices + 1];
+
+    for (int i = 1; i <= G.number_of_edges; ++i) {
+        if (G.graph[vertex][i] == 1) {
+            for (int j = 1; j <= G.number_of_vertices; ++j) {
+                if (G.graph[j][i] == 1 && j != vertex) {
+                    temp[j] = 1;
+                }
+            }
+        }
+    }
+
+    for (int i = 1; i <= G.number_of_vertices; ++i) {
+        if (temp[i] == 1) {
+            append(&adjacents, i);
+        }
+    }
+
+    return adjacents;
+}

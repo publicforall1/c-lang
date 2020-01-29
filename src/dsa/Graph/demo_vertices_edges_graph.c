@@ -13,6 +13,9 @@ Graph setup_graph();
 int main(void) {
     printf("Test vertices - edges graph");
     Graph g = setup_graph();
+    List adjacents_of_1 = get_adjacents(g, 1);
+    List adjacents_of_2 = get_adjacents(g, 2);
+    List adjacents_of_3 = get_adjacents(g, 3);
 
     assert(degree(g, 1) == 3);
     assert(degree(g, 2) == 2);
@@ -24,7 +27,21 @@ int main(void) {
     assert(is_adjacent(g, 2, 3) == 0);
     assert(is_adjacent(g, 2, 4) == 1);
     assert(is_adjacent(g, 4, 2) == 1);
+
+    // adjacents_of_1 test
+    assert(value_at(adjacents_of_1, 1) == 2);
+    assert(value_at(adjacents_of_1, 2) == 3);
+    assert(value_at(adjacents_of_1, 3) == 4);
+
+    // adjacents_of_2 test
+    assert(value_at(adjacents_of_2, 1) == 1);
+    assert(value_at(adjacents_of_2, 2) == 4);
+
+    // adjacents_of_3 test
+    assert(value_at(adjacents_of_3, 1) == 1);
+    assert(value_at(adjacents_of_3, 2) == 4);
     printf(" -> Done\n");
+
     return 0;
 }
 
