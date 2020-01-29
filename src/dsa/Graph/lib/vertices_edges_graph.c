@@ -13,59 +13,45 @@
 
 #include "vertices_edges_graph.h"
 
-void init_graph(Graph* G, int vertices, int edges) {
-    G->number_of_vertices = vertices;
-    G->number_of_edges = edges;
+void init_graph(Graph* g, int vertices, int edges) {
+    g->number_of_vertices = vertices;
+    g->number_of_edges = edges;
 
     for (int i = 1; i <= vertices; ++i) {
         for (int j = 1; j <= edges; ++j) {
-            G->graph[i][j] = 0;
+            g->graph[i][j] = 0;
         }
     }
 }
 
-void add_edge(Graph* G, int edge, int vertex1, int vertex2) {
-    G->graph[vertex1][edge] = 1;
-    G->graph[vertex2][edge] = 1;
+void add_edge(Graph* g, int edge, int vertex1, int vertex2) {
+    g->graph[vertex1][edge] = 1;
+    g->graph[vertex2][edge] = 1;
 }
 
-int is_adjacent(Graph G, int vertex1, int vertex2) {
-    int ajacent = 0;
-    for (int i = 1; i <= G.number_of_edges; ++i) {
-        if (G.graph[vertex1][i] == 1 && G.graph[vertex2][i] == 1) {
-            ajacent = 1;
+int is_adjacent(Graph g, int vertex1, int vertex2) {
+    for (int i = 1; i <= g.number_of_edges; ++i) {
+        if (g.graph[vertex1][i] == 1 && g.graph[vertex2][i] == 1) {
+            return 1;
         }
     }
-    return ajacent;
+    return 0;
 }
 
-int degree(Graph G, int vertex) {
+int degree(Graph g, int vertex) {
     int d = 0;
-    for (int i = 0; i <= G.number_of_edges; ++i) {
-        if (G.graph[vertex][i] == 1) {
-            ++d;
-        }
+    for (int i = 1; i <= g.number_of_edges; ++i) {
+        d += g.graph[vertex][i];
     }
     return d;
 }
 
-List get_adjacents(Graph G, int vertex) {
+List get_adjacents(Graph g, int vertex) {
     List adjacents;
     init_list(&adjacents);
-    int temp[G.number_of_vertices + 1];
 
-    for (int i = 1; i <= G.number_of_edges; ++i) {
-        if (G.graph[vertex][i] == 1) {
-            for (int j = 1; j <= G.number_of_vertices; ++j) {
-                if (G.graph[j][i] == 1 && j != vertex) {
-                    temp[j] = 1;
-                }
-            }
-        }
-    }
-
-    for (int i = 1; i <= G.number_of_vertices; ++i) {
-        if (temp[i] == 1) {
+    for (int i = 1; i <= g.number_of_edges; ++i) {
+        if (is_adjacent(g, i, vertex) && i != vertex) {
             append(&adjacents, i);
         }
     }
