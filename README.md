@@ -22,8 +22,7 @@
 - [The Next Day](./src/others/the_next_day.c)
 
 ## # Data structures
-- [Fixed List](./src/dsa/FixedList/lib/fixed_list.c)
-- [Singly-Linked Lists](./src/dsa/SLL/)
+- [List](./src/dsa/List/)
 - [Stack](./src/dsa/Stack/)
 - [[Stack Application] Valid Parentheses](./src/dsa/Stack/parentheses.c)
 - [Queue](./src/dsa/Queue/)
