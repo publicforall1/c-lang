@@ -39,3 +39,16 @@ int degree(Graph G, int vertex) {
     }
     return deg;
 }
+
+List get_adjacents(Graph G, int vertex) {
+    List adjacents;
+    init_list(&adjacents);
+
+    for (int i = 1; i <= G.number_of_vertices; ++i) {
+        if (is_adjacent(G, i, vertex) && i != vertex) {
+            append(&adjacents, i);
+        }
+    }
+
+    return adjacents;
+}
