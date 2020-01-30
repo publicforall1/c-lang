@@ -14,5 +14,6 @@ void init_graph(Graph* g, int vertices); // O(n)
 void add_edge(Graph* g, int vertex1, int vertex2); // O(1)
 int is_adjacent(Graph g, int vertex1, int vertex2); // O(n)
 int degree(Graph g, int vertex); // O(1)
+List get_adjacents(Graph g, int vertex); // O(n^2)
 
 #endif

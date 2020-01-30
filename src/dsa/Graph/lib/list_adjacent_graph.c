@@ -1,5 +1,5 @@
 // Implementing directed graph using list of adjacents
-// 
+//
 // V [], []
 // e [], []
 // r [], []
@@ -36,3 +36,16 @@ int degree(Graph g, int vertex) {
 
     return out_degree + in_degree;
 } // O(1)
+
+List get_adjacents(Graph g, int vertex) {
+    List adjacents;
+    init_list(&adjacents);
+
+    for (int i = 1; i <= g.number_of_vertices; ++i) {
+        if (is_adjacent(g, vertex, i) && i != vertex) {
+            append(&adjacents, i);
+        }
+    }
+
+    return adjacents;
+} // O(n^2)
