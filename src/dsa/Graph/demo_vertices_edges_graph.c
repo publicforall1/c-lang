@@ -22,11 +22,11 @@ int main(void) {
     assert(degree(g, 3) == 2);
     assert(degree(g, 4) == 3);
 
-    assert(is_adjacent(g, 1, 2) == 1);
-    assert(is_adjacent(g, 2, 1) == 1);
-    assert(is_adjacent(g, 2, 3) == 0);
-    assert(is_adjacent(g, 2, 4) == 1);
-    assert(is_adjacent(g, 4, 2) == 1);
+    assert(is_adjacent(g, 1, 2));
+    assert(is_adjacent(g, 2, 1));
+    assert(!is_adjacent(g, 2, 3));
+    assert(is_adjacent(g, 2, 4));
+    assert(is_adjacent(g, 4, 2));
 
     // adjacents_of_1 test
     assert(value_at(adjacents_of_1, 1) == 2);
