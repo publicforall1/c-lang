@@ -9,6 +9,7 @@ typedef struct Graph {
     int graph[MAX_NUMBER_OF_VERTICES][MAX_NUMBER_OF_EDGES];
     int number_of_vertices;
     int number_of_edges;
+    int visited[MAX_NUMBER_OF_VERTICES];
 } Graph;
 
 void init_graph(Graph* G, int vertices, int edges);
@@ -16,5 +17,8 @@ void add_edge(Graph* G, int edge, int vertex1, int vertex2);
 int is_adjacent(Graph G, int vertex1, int vertex2);
 int degree(Graph G, int vertex);
 List get_adjacents(Graph G, int vertex);
+void mark_visited(Graph* g, int vertex);
+int is_visited(Graph g, int vertex);
+void dfs(Graph* g, int start);
 
 #endif
