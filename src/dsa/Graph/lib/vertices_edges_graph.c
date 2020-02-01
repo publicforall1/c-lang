@@ -50,7 +50,7 @@ List get_adjacents(Graph g, int vertex) {
     List adjacents;
     init_list(&adjacents);
 
-    for (int i = 1; i <= g.number_of_edges; ++i) {
+    for (int i = 1; i <= g.number_of_vertices; ++i) {
         if (is_adjacent(g, i, vertex) && i != vertex) {
             append(&adjacents, i);
         }
