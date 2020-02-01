@@ -40,6 +40,15 @@ int main(void) {
     // adjacents_of_3 test
     assert(value_at(adjacents_of_3, 1) == 1);
     assert(value_at(adjacents_of_3, 2) == 4);
+
+    // graph traversal
+    // depth first searh recursion
+    dfs(&g, 1);
+    assert(is_visited(g, 1));
+    assert(is_visited(g, 2));
+    assert(is_visited(g, 3));
+    assert(is_visited(g, 4));
+
     printf(" -> Done\n");
 
     return 0;
