@@ -13,6 +13,7 @@
 // x 0 0 0 0 0 0
 
 #include "vertices_vertices_graph.h"
+#include <stdio.h>
 
 void init_graph(Graph* G, int vertices) {
     G->number_of_vertices = vertices;
@@ -51,4 +52,24 @@ List get_adjacents(Graph G, int vertex) {
     }
 
     return adjacents;
+}
+
+void mark_visited(Graph* g, int vertex) { g->visited[vertex] = 1; }
+
+int is_visited(Graph g, int vertex) { return g.visited[vertex]; }
+
+void dfs(Graph* g, int start) {
+    if (is_visited(*g, start)) {
+        return;
+    }
+
+    // Do anything you want with single node/vertex
+    // printf("\n%d", start);
+    mark_visited(g, start);
+
+    List adjacents = get_adjacents(*g, start);
+    for (int i = 1; i <= length(adjacents); ++i) {
+        int vertex = value_at(adjacents, i);
+        dfs(g, vertex);
+    }
 }

@@ -49,3 +49,23 @@ List get_adjacents(Graph g, int vertex) {
 
     return adjacents;
 } // O(n^2)
+
+void mark_visited(Graph* g, int vertex) { g->visited[vertex] = 1; }
+
+int is_visited(Graph g, int vertex) { return g.visited[vertex]; }
+
+void dfs(Graph* g, int start) {
+    if (is_visited(*g, start)) {
+        return;
+    }
+
+    // Do anything you want with single node/vertex
+    // printf("\n%d", start);
+    mark_visited(g, start);
+
+    List adjacents = get_adjacents(*g, start);
+    for (int i = 1; i <= length(adjacents); ++i) {
+        int vertex = value_at(adjacents, i);
+        dfs(g, vertex);
+    }
+}
