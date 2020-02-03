@@ -97,3 +97,24 @@ void dfs_using_stack(Graph* g, int start) {
         }
     }
 }
+
+void bfs_using_queue(Graph* g, int start) {
+    Queue q;
+    makenull_queue(&q);
+    enqueue(start, &q);
+
+    while (!is_empty_queue(q)) {
+        int vertex = front_queue(q);
+        dequeue(&q);
+
+        if (!is_visited(*g, vertex)) {
+            // Do anything you want with single node/vertex
+            // printf("\n%d", vertex);
+            mark_visited(g, vertex);
+            List adjacents = get_adjacents(*g, vertex);
+            for (int i = 1; i <= length(adjacents); ++i) {
+                enqueue(value_at(adjacents, i), &q);
+            }
+        }
+    }
+}

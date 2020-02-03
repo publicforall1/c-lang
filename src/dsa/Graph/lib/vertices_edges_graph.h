@@ -6,6 +6,7 @@
 
 #include "list/list.h"
 #include "stack/stack.h"
+#include "queue/circular_queue.h"
 typedef struct Graph {
     int graph[MAX_NUMBER_OF_VERTICES][MAX_NUMBER_OF_EDGES];
     int number_of_vertices;
@@ -23,5 +24,6 @@ int is_visited(Graph g, int vertex);
 void dfs(Graph* g, int start);
 void reset_visted(Graph* g); // O(n)
 void dfs_using_stack(Graph* g, int start);
+void bfs_using_queue(Graph* g, int start);
 
 #endif
