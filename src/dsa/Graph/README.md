@@ -1,6 +1,7 @@
 # Graph: API
 - Type: `Graph`
-- Functions: `init_graph`, `add_edge`, `is_adjacent`, `degree`
+- Functions: `init_graph`, `add_edge`, `is_adjacent`, `degree`,
+`get_adjacents`, `mark_visited`, `is_visited`, `dfs`, `reset_visted`, `dfs_using_stack`
 
 ## Using matrix vertices - edge
 - Properties:
