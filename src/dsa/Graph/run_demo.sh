@@ -19,3 +19,4 @@ make prog=$demo3 type=list_adjacent
 rm $demo1.out
 rm $demo2.out
 rm $demo3.out
+make clean
