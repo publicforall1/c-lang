@@ -49,6 +49,20 @@ int main(void) {
     assert(is_visited(g, 3));
     assert(is_visited(g, 4));
 
+    // reset_visted works
+    reset_visted(&g);
+    assert(!is_visited(g, 2));
+    assert(!is_visited(g, 1));
+    assert(!is_visited(g, 3));
+    assert(!is_visited(g, 4));
+
+    // depth-first search using stack
+    dfs_using_stack(&g, 1);
+    assert(is_visited(g, 1));
+    assert(is_visited(g, 2));
+    assert(is_visited(g, 3));
+    assert(is_visited(g, 4));
+
     printf(" -> Done\n");
 
     return 0;

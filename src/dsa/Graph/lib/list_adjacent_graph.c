@@ -8,6 +8,7 @@
 // x [], []
 
 #include "list_adjacent_graph.h"
+#include <stdio.h>
 
 void init_graph(Graph* g, int vertices) {
     g->number_of_vertices = vertices;
@@ -67,5 +68,32 @@ void dfs(Graph* g, int start) {
     for (int i = 1; i <= length(adjacents); ++i) {
         int vertex = value_at(adjacents, i);
         dfs(g, vertex);
+    }
+}
+
+void reset_visted(Graph* g) {
+    for (int i = 1; i <= g->number_of_vertices; ++i) {
+        g->visited[i] = 0;
+    }
+} // O(n)
+
+void dfs_using_stack(Graph* g, int start) {
+    Stack s;
+    makenull_stack(&s);
+    push_stack(start, &s);
+
+    while (!is_empty_stack(s)) {
+        int vertex = top_stack(s);
+        pop_stack(&s);
+
+        if (!is_visited(*g, vertex)) {
+            // Do anything you want with single node/vertex
+            // printf("\n%d", vertex);
+            mark_visited(g, vertex);
+            List adjacents = get_adjacents(*g, vertex);
+            for (int i = 1; i <= length(adjacents); ++i) {
+                push_stack(value_at(adjacents, i), &s);
+            }
+        }
     }
 }

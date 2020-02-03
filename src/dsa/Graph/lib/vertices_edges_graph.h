@@ -5,6 +5,7 @@
 #define MAX_NUMBER_OF_EDGES 400
 
 #include "list/list.h"
+#include "stack/stack.h"
 typedef struct Graph {
     int graph[MAX_NUMBER_OF_VERTICES][MAX_NUMBER_OF_EDGES];
     int number_of_vertices;
@@ -20,5 +21,7 @@ List get_adjacents(Graph G, int vertex);
 void mark_visited(Graph* g, int vertex);
 int is_visited(Graph g, int vertex);
 void dfs(Graph* g, int start);
+void reset_visted(Graph* g); // O(n)
+void dfs_using_stack(Graph* g, int start);
 
 #endif

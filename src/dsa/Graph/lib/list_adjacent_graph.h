@@ -2,6 +2,7 @@
 #define LIST_ADJACENT_GRAPH
 
 #include "list/list.h"
+#include "stack/stack.h"
 #define MAX_NUMBER_OF_VERTICES 100
 
 typedef struct {
@@ -19,5 +20,7 @@ List get_adjacents(Graph g, int vertex); // O(n^2)
 void mark_visited(Graph* g, int vertex);
 int is_visited(Graph g, int vertex);
 void dfs(Graph* g, int start);
+void reset_visted(Graph* g); // O(n)
+void dfs_using_stack(Graph* g, int start);
 
 #endif
