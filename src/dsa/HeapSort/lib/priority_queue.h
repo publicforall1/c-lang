@@ -8,7 +8,7 @@ typedef int Node;
 typedef int Key;
 
 typedef struct {
-    int keys[MAX_NUMBER_OF_NODES];
+    Key keys[MAX_NUMBER_OF_NODES];
     int length;
 } P_Queue;
 

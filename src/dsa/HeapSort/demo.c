@@ -11,7 +11,7 @@
 //
 
 int main(void) {
-    Heap h;
+    P_Queue h;
     init_heap(&h);
 
     append_heap(&h, 57);
