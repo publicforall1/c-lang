@@ -2,7 +2,7 @@
 
 #define PRIORITY_QUEUE_H
 
-#define MAX_NUMBER_OF_NODES 100
+#define MAX_NUMBER_OF_NODES 100000
 
 typedef int Node;
 typedef int Key;
