@@ -10,7 +10,7 @@ void swap(int* a, int* b) {
 int is_leaf(P_Queue q, Node x) {
     Node left = 2 * x;
     Node right = 2 * x + 1;
-    return (left > q.length || right > q.length);
+    return (left > q.length && right > q.length);
 } // O(1)
 
 void init_heap(P_Queue* q) { q->length = 0; } // O(1)
@@ -37,13 +37,24 @@ void max_heapify(P_Queue* q, Node x) {
 
     Node left = 2 * x;
     Node right = 2 * x + 1;
+    Node largest;
+    Key* p_largest_key;
+    Key* p_x_key;
+
+    if (right > q->length) {
+        largest = left;
+        goto swap_section;
+    }
 
     Key left_key = q->keys[left];
     Key right_key = q->keys[right];
 
-    Node largest = left_key > right_key ? left : right;
-    Key* p_largest_key = &(q->keys[largest]);
-    Key* p_x_key = &(q->keys[x]);
+    largest = left_key >= right_key ? left : right;
+    goto swap_section;
+
+swap_section:
+    p_largest_key = &(q->keys[largest]);
+    p_x_key = &(q->keys[x]);
 
     if (*p_largest_key > *p_x_key) {
         swap(p_largest_key, p_x_key);
