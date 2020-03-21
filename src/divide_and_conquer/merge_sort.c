@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_SIZE 1000000 // 1 milion
-
 void merge(int array[], int left, int middle, int right); // O(m + n)
 void merge_sort(int array[], int left, int right);        // O(n log n)
 void test_merge_sort();
@@ -55,6 +53,7 @@ void merge_sort(int array[], int left, int right) {
     merge(array, left, middle, right);
 }
 
+#define MAX_SIZE 1000000 // 1 milion
 void test_merge_sort() {
     srand(time(NULL));
     int array[MAX_SIZE];
