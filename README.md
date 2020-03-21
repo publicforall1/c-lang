@@ -36,6 +36,7 @@
 
 ## # Divide & Conquer
 - [Merge sort](./src/divide_and_conquer/merge_sort.c)
+- [Quick sort](./src/divide_and_conquer/quick_sort.c)
 
 ### References
 - [Online graph editor](https://csacademy.com/app/graph_editor/)
