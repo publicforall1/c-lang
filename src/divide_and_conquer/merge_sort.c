@@ -1,3 +1,4 @@
+#include "ni_marco.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,17 +54,16 @@ void merge_sort(int array[], int left, int right) {
     merge(array, left, middle, right);
 }
 
-#define MAX_SIZE 1000000 // 1 milion
 void test_merge_sort() {
     srand(time(NULL));
-    int array[MAX_SIZE];
+    int array[ONE_MILION];
     // generate array of random numbers
-    for (int i = 0; i < MAX_SIZE; ++i)
+    for (int i = 0; i < ONE_MILION; ++i)
         array[i] = rand();
 
-    merge_sort(array, 0, MAX_SIZE - 1);
+    merge_sort(array, 0, ONE_MILION - 1);
 
-    for (int i = 0; i < MAX_SIZE - 1; ++i)
+    for (int i = 0; i < ONE_MILION - 1; ++i)
         assert(array[i] <= array[i + 1]);
 }
 
