@@ -8,6 +8,7 @@
 - [Prime Number](./src/maths/prime_number.c)
 - [Pascal's Triangle](./src/maths/pascal_triangle.c)
 - [Second Largest Number](./src/maths/second_largest_number.c)
+- [Newton's Square Root Approximation](./src/maths/sqrt_newton.c)
 
 ## # Array Algorithms
 - [Reverse Array](./src/arrays/reverse_array.c)
