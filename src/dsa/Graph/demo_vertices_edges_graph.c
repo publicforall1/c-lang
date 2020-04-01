@@ -2,87 +2,32 @@
 #include "lib/vertices_edges_graph.h"
 #include <stdio.h>
 
-/* Undirected - Graph
-1 - 2
-| \ |
-3 - 4
-*/
-
-Graph setup_graph();
-
 int main(void) {
-    printf("Test vertices - edges graph");
-    Graph g = setup_graph();
-    List adjacents_of_1 = get_adjacents(g, 1);
-    List adjacents_of_2 = get_adjacents(g, 2);
-    List adjacents_of_3 = get_adjacents(g, 3);
+    FILE* fp = freopen("./data/graph.txt", "rt", stdin);
+    // Check null
+    if (!fp)
+        return 0;
 
-    assert(degree(g, 1) == 3);
-    assert(degree(g, 2) == 2);
-    assert(degree(g, 3) == 2);
-    assert(degree(g, 4) == 3);
+    int number_of_vertices, number_of_edges;
+    scanf("%d%d", &number_of_vertices, &number_of_edges);
 
-    assert(is_adjacent(g, 1, 2));
-    assert(is_adjacent(g, 2, 1));
-    assert(!is_adjacent(g, 2, 3));
-    assert(is_adjacent(g, 2, 4));
-    assert(is_adjacent(g, 4, 2));
-
-    // adjacents_of_1 test
-    assert(value_at(adjacents_of_1, 1) == 2);
-    assert(value_at(adjacents_of_1, 2) == 3);
-    assert(value_at(adjacents_of_1, 3) == 4);
-
-    // adjacents_of_2 test
-    assert(value_at(adjacents_of_2, 1) == 1);
-    assert(value_at(adjacents_of_2, 2) == 4);
-
-    // adjacents_of_3 test
-    assert(value_at(adjacents_of_3, 1) == 1);
-    assert(value_at(adjacents_of_3, 2) == 4);
-
-    // graph traversal
-    // depth first searh recursion
-    dfs(&g, 1);
-    assert(is_visited(g, 1));
-    assert(is_visited(g, 2));
-    assert(is_visited(g, 3));
-    assert(is_visited(g, 4));
-
-    // reset_visted works
-    reset_visted(&g);
-    assert(!is_visited(g, 2));
-    assert(!is_visited(g, 1));
-    assert(!is_visited(g, 3));
-    assert(!is_visited(g, 4));
-
-    // depth-first search using stack
-    dfs_using_stack(&g, 1);
-    assert(is_visited(g, 1));
-    assert(is_visited(g, 2));
-    assert(is_visited(g, 3));
-    assert(is_visited(g, 4));
-
-    reset_visted(&g);
-    // breadth-first search using queue
-    bfs_using_queue(&g, 1);
-    assert(is_visited(g, 1));
-    assert(is_visited(g, 2));
-    assert(is_visited(g, 3));
-    assert(is_visited(g, 4));
-
-    printf(" -> Done\n");
-
-    return 0;
-}
-
-Graph setup_graph() {
     Graph g;
-    init_graph(&g, 4, 5);
-    add_edge(&g, 1, 1, 2);
-    add_edge(&g, 2, 1, 3);
-    add_edge(&g, 3, 1, 4);
-    add_edge(&g, 4, 2, 4);
-    add_edge(&g, 5, 3, 4);
-    return g;
+    init_graph(&g, number_of_vertices, number_of_edges);
+
+    for (int i = 1; i <= number_of_edges; ++i) {
+        int x, y;
+        scanf("%d%d", &x, &y);
+        add_edge(&g, i, x, y);
+    }
+    // setup visited
+    int visited[number_of_vertices + 1];
+    for (int i = 1; i <= number_of_vertices; ++i)
+        visited[i] = 0;
+
+    // dfs(g, 1, visited);
+    // dfs_using_stack(g, 1, visited);
+    // bfs_using_queue(g, 1, visited);
+
+    fclose(fp);
+    return 0;
 }
