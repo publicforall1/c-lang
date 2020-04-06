@@ -21,8 +21,7 @@ int main(void) {
     }
     // setup visited
     int visited[number_of_vertices + 1];
-    for (int i = 1; i <= number_of_vertices; ++i)
-        visited[i] = 0;
+    init_visited(visited, number_of_vertices);
 
     // dfs(g, 1, visited);
     // dfs_using_stack(g, 1, visited);

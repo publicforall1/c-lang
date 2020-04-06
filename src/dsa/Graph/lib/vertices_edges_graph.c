@@ -56,57 +56,69 @@ List get_adjacents(Graph g, int vertex) {
     return adjacents;
 } // O(n)
 
-void dfs(Graph g, int start, int* visited) {
-    if (visited[start] == 1)
+int init_visited(int visited[], int size) {
+    int i = 1;
+    while (i <= size)
+        visited[i++] = 0;
+} // O(n)
+
+int is_visited(int visited[], int vertex) {
+    return visited[vertex] == 1;
+} // O(1)
+
+void mark_visited(int visited[], int vertex) { visited[vertex] = 1; } // O(1)
+
+void dfs(Graph g, int start_vertex, int* visited) {
+    if (is_visited(visited, start_vertex))
         return;
 
     // Do anything you want with single node/vertex
-    // printf("\n%d", start);
-    visited[start] = 1;
+    // printf("%d\n", start_vertex);
+    mark_visited(visited, start_vertex);
 
-    List adjacents = get_adjacents(g, start);
+    List adjacents = get_adjacents(g, start_vertex);
     for (int i = 1; i <= length(adjacents); ++i) {
         int vertex = value_at(adjacents, i);
         dfs(g, vertex, visited);
     }
 }
 
-void dfs_using_stack(Graph g, int start, int* visited) {
+void dfs_using_stack(Graph g, int start_vertex, int* visited) {
     Stack s;
     makenull_stack(&s);
-    push_stack(start, &s);
+    push_stack(start_vertex, &s);
 
     while (!is_empty_stack(s)) {
         int vertex = top_stack(s);
         pop_stack(&s);
 
-        if (visited[vertex] == 0) {
-            // Do anything you want with single node/vertex
-            // printf("\n%d", vertex);
-            visited[vertex] = 1;
-            List adjacents = get_adjacents(g, vertex);
-            for (int i = 1; i <= length(adjacents); ++i) {
-                push_stack(value_at(adjacents, i), &s);
-            }
-        }
+        if (is_visited(visited, vertex))
+            continue;
+
+        // Do anything you want with single node/vertex
+        // printf("%d\n", vertex);
+        mark_visited(visited, vertex);
+        List adjacents = get_adjacents(g, vertex);
+        for (int i = 1; i <= length(adjacents); ++i)
+            push_stack(value_at(adjacents, i), &s);
     }
 }
 
-void bfs_using_queue(Graph g, int start, int* visited) {
+void bfs_using_queue(Graph g, int start_vertex, int* visited) {
     Queue q;
     makenull_queue(&q);
-    enqueue(start, &q);
+    enqueue(start_vertex, &q);
 
     while (!is_empty_queue(q)) {
         int vertex = front_queue(q);
         dequeue(&q);
 
-        if (visited[vertex] == 1)
+        if (is_visited(visited, vertex))
             continue;
 
         // Do anything you want with single node/vertex
         // printf("%d\n", vertex);
-        visited[vertex] = 1;
+        mark_visited(visited, vertex);
         List adjacents = get_adjacents(g, vertex);
         for (int i = 1; i <= length(adjacents); ++i)
             enqueue(value_at(adjacents, i), &q);

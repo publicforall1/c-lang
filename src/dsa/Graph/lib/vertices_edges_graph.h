@@ -19,8 +19,11 @@ void add_edge(Graph* G, int edge, int vertex1, int vertex2); // O(1)
 int is_adjacent(Graph G, int vertex1, int vertex2);          // O(n)
 int degree(Graph G, int vertex);                             // O(n)
 List get_adjacents(Graph G, int vertex);                     // O(n)
+int init_visited(int visited[], int size);                   // O(n)
+int is_visited(int visited[], int vertex);                   // O(1)
+void mark_visited(int visited[], int vertex);                // O(1)
 void dfs(Graph g, int start, int* visited);
-void dfs_using_stack(Graph g, int start, int* visited);
-void bfs_using_queue(Graph g, int start, int* visited);
+void dfs_using_stack(Graph g, int start_vertex, int* visited);
+void bfs_using_queue(Graph g, int start_vertex, int* visited);
 
 #endif
