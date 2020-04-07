@@ -1,5 +1,5 @@
 #ifndef LIST_H
-#define LIST
+#define LIST_H
 
 #define LIST_CAPACITY 100
 typedef int Type;
