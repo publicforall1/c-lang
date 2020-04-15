@@ -14,7 +14,7 @@
 - [Reverse Array](./src/arrays/reverse_array.c)
 - [Intersection two sets of integers](./src/arrays/intersection.c)
 - [Delete Element by Value](./src/arrays/array_delete.c)
-- [Selection Sort](./src/arrays/selection_sort.c)
+- [Interchange Sort](./src/arrays/interchange_sort.c)
 - [Binary Search](./src/arrays/binary_search.c)
 
 ## # Others

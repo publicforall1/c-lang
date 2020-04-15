@@ -1,33 +1,46 @@
 /**
- * Program Name: Implement Selection Sort by my own way
+ * Program Name: Implement Interchange Sort by my own way
  * Author: taiprogramer
  */
+#include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#define size 20
+#include <time.h>
 
-void selection_sort(int arr[], int number_of_element, bool is_asc);
+#define SIZE 10000
+
+void interchange_sort(int arr[], int number_of_element, bool is_asc);
 void swap(int* a, int* b);
 void show_array(int arr[], int number_of_element);
+void test_interchange_sort();
 
 int main(void) {
 
-    int arr[size] = {17, 7, 6,  4, 18, 10, 13, 19, 9, 11,
-                     16, 5, 20, 8, 3,  15, 2,  12, 1, 14};
-    printf("Origin Int Array: ");
-    show_array(arr, size);
-    selection_sort(arr, size, 1);
-    printf("Ascending Int Array: ");
-    show_array(arr, size);
-    selection_sort(arr, size, 0);
-    printf("Descending Int Array: ");
-    show_array(arr, size);
+    test_interchange_sort();
 
     return 0;
 }
 
-void selection_sort(int arr[], int number_of_element, bool is_asc) {
+void test_interchange_sort() {
+    srand(time(NULL));
+    int arr[SIZE];
+
+    // generate random number
+    for (int i = 0; i < SIZE; ++i)
+        arr[i] = rand();
+
+    interchange_sort(arr, SIZE, 1); // sort by ascending
+    for (int i = 0; i < SIZE - 1; ++i)
+        assert(arr[i] <= arr[i + 1]);
+
+    interchange_sort(arr, SIZE, 0); // sort by descending
+    for (int i = 0; i < SIZE - 1; ++i)
+        assert(arr[i] >= arr[i + 1]);
+}
+
+void interchange_sort(int arr[], int number_of_element, bool is_asc) {
     /**
      * @ Warning:
      * - Keep calm & read the code.
