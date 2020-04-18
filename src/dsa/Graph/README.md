@@ -10,18 +10,16 @@
 
 > [See implementation](./lib/undirected_graph/vertices_edges_graph.c)
 
-<!-- 
-## Using matrix vertices - vertices
+## Directed graph
+### Using vertices - vertices matrix
 - Properties:
-    - Undirected/Directed(*) graph
-    - Simple/Multigraph
-    - Self-loop
+    - [x] Directed
+    - [x] Simple/Multigraph
+    - [x] Self-loop
 
-(*): Not implement yet
+> [See implementation](./lib/directed_graph/vertices_vertices_graph.c)
 
-> [See implementation](./lib/vertices_vertices_graph.c)
-
-## Using list of adjacents
+<!-- ## Using list of adjacents
 - Properties:
     - Directed/Undirected(*) graph
     - Simple/Multigraph
