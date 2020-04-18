@@ -21,6 +21,7 @@ int main(void) {
     printf("-> Testing implementation...\n");
     Graph g = load_graph("./data/ni_graph.txt");
     test_degree(g);
+    test_get_adjacents(g);
     test_dfs(g);
     test_dfs_using_stack(g);
     test_bfs_using_queue(g);
@@ -58,7 +59,7 @@ void test_get_adjacents_run_test(Graph g, int start_vertex,
                                  int adjacent_result[]) {
     List l = get_adjacents(g, start_vertex);
     for (int i = 1; i <= length(l); ++i)
-        assert(adjacent_result[i] == value_at(l, i));
+        assert(adjacent_result[i - 1] == value_at(l, i));
 }
 
 void test_get_adjacents(Graph g) {
