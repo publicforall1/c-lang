@@ -1,17 +1,17 @@
 # -*- Makefile -*-
 # Compile Instruction:
-# 	make prog=[filename_without_extension] type=[type_of_graph]
+# 	make prog=[filename_without_extension] type=[type_of_graph] impl_type=[implement_type]
 
-${prog}: ${prog}.o ${type}_graph.o stack.o queue.o list.o
+${prog}: ${prog}.o ${impl_type}_graph.o stack.o queue.o list.o
 	@gcc -o ${prog}.out \
-	${prog}.o ${type}_graph.o stack.o queue.o list.o \
+	${prog}.o ${impl_type}_graph.o stack.o queue.o list.o \
 	-std=c11 -fstack-protector -pedantic-errors -Wunused-variable -lm \
 
 ${prog}.o: ${prog}.c
 	@gcc -c ${prog}.c -o ${prog}.o
 
-${type}_graph.o: lib/${type}_graph.c
-	@gcc -c lib/${type}_graph.c -o ${type}_graph.o
+${impl_type}_graph.o: lib/${type}/${impl_type}_graph.c
+	@gcc -c lib/${type}/${impl_type}_graph.c -o ${impl_type}_graph.o
 
 stack.o: lib/stack/stack.c
 	@gcc -c lib/stack/stack.c -o stack.o

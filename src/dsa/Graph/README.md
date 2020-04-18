@@ -1,16 +1,16 @@
 # Graph: API
 - Type: `Graph`
-- Functions: `init_graph`, `add_edge`, `is_adjacent`, `degree`,
-`get_adjacents`, `mark_visited`, `is_visited`, `dfs`, `reset_visted`, `dfs_using_stack`, `bfs_using_queue`
 
-## Using matrix vertices - edge
+## Undirected graph
+### Using vertices - edge matrix
 - Properties:
-    - Undirected graph
-    - Simple/multigraph
-    - No self-loop
+    - [x] Undirected
+    - [x] Simple/multigraph
+    - [x] No self-loop
 
-> [See implementation](./lib/vertices_edges_graph.c)
+> [See implementation](./lib/undirected_graph/vertices_edges_graph.c)
 
+<!-- 
 ## Using matrix vertices - vertices
 - Properties:
     - Undirected/Directed(*) graph
@@ -29,4 +29,4 @@
 
 (*): Not implement yet
 
-> [See implementation](./lib/list_adjacent_graph.c)
+> [See implementation](./lib/list_adjacent_graph.c) -->
