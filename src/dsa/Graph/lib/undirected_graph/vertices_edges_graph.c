@@ -123,3 +123,45 @@ int is_connected(Graph g) {
     dfs(&g, 1, &trav);
     return length(trav) == g.vertices;
 }
+
+void find_and_set_parent(Graph* g) {
+    for (int i = 1; i <= g->vertices; ++i)
+        g->parent[i] = -1;
+
+    for (int i = 1; i <= g->vertices; ++i) {
+        List neighbor = get_adjacents(*g, i);
+        for (int j = 1; j <= length(neighbor); ++j) {
+            int vertex = value_at(neighbor, j);
+            if (g->parent[vertex] == -1) {
+                g->parent[vertex] = i;
+            }
+        }
+    }
+    g->parent[1] = -1;
+}
+
+int have_cycle(Graph g) {
+    find_and_set_parent(&g);
+    Stack s;
+    makenull_stack(&s);
+    push_stack(1, &s);
+
+    while (!is_empty_stack(s)) {
+        int vertex = top_stack(s);
+        pop_stack(&s);
+
+        if (g.visited[vertex] == VISITED)
+            continue;
+
+        g.visited[vertex] = VISITED;
+        List adjacents = get_adjacents(g, vertex);
+        for (int i = 1; i <= length(adjacents); ++i) {
+            int v = value_at(adjacents, i);
+            push_stack(value_at(adjacents, i), &s);
+            if (g.visited[v] == VISITED && g.parent[vertex] != v) {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}

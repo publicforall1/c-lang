@@ -15,6 +15,7 @@ typedef struct Graph {
     int vertices;
     int edges;
     int visited[MAX_NUMBER_OF_VERTICES];
+    int parent[MAX_NUMBER_OF_VERTICES]; // for have_cycle()
 } Graph;
 
 // Classic
@@ -30,6 +31,8 @@ void reset_visited(Graph* g); // O(n)
 void dfs(Graph* g, int vertex, List* traversal);
 void dfs_using_stack(Graph* g, int start_vertex, List* traversal);
 void bfs_using_queue(Graph* g, int start_vertex, List* traversal);
-int is_connected(Graph g); // O(Complexity(dfs))
+int is_connected(Graph g);          // O(Complexity(dfs))
+void find_and_set_parent(Graph* g); // for have_cycle
+int have_cycle(Graph g);            // O(Complexity(dfs))
 
 #endif
