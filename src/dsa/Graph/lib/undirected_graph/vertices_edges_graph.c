@@ -116,3 +116,10 @@ void bfs_using_queue(Graph* g, int start_vertex, List* traversal) {
             enqueue(value_at(adjacents, i), &q);
     }
 }
+
+int is_connected(Graph g) {
+    List trav;
+    init_list(&trav);
+    dfs(&g, 1, &trav);
+    return length(trav) == g.vertices;
+}
