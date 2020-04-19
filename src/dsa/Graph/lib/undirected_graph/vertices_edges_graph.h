@@ -26,10 +26,10 @@ int degree(Graph G, int vertex);                             // O(n)
 // Medium
 List get_adjacents(Graph g, int vertex); // O(n)
 // Medium :: Graph traversal
-void reset_visited(Graph* g);                                      // O(n)
-void dfs(Graph* g, int vertex, List* traversal);                   // O(n)
-void dfs_using_stack(Graph* g, int start_vertex, List* traversal); // O(n)
-void bfs_using_queue(Graph* g, int start_vertex, List* traversal); // O(n)
+void reset_visited(Graph* g); // O(n)
+void dfs(Graph* g, int vertex, List* traversal);
+void dfs_using_stack(Graph* g, int start_vertex, List* traversal);
+void bfs_using_queue(Graph* g, int start_vertex, List* traversal);
 int is_connected(Graph g); // O(Complexity(dfs))
 
 #endif
