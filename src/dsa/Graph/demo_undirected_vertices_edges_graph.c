@@ -46,6 +46,7 @@ Graph load_graph(const char* file_name) {
         scanf("%d%d", &x, &y);
         add_edge(&g, i, x, y);
     }
+    fclose(fp);
     return g;
 }
 
