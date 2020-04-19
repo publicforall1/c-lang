@@ -125,3 +125,32 @@ void bfs_using_queue(Graph* g, int start_vertex, List* traversal) {
             enqueue(value_at(adjacents, i), &q);
     }
 }
+
+Graph reverse_direction(Graph g) {
+    for (int i = 1; i <= g.vertices; ++i) {
+        for (int j = 1; j <= g.vertices; ++j) {
+            if (j == i)
+                continue;
+
+            if (g.matrix[i][j] > 0) {
+                g.matrix[j][i] = g.matrix[i][j];
+                g.matrix[i][j] = 0;
+            }
+        }
+    }
+    return g;
+} // O(n^2)
+
+int is_connected(Graph g) {
+    Graph g1 = g;
+    Graph g2 = reverse_direction(g); // O(n^2)
+    List trav;                       // it's not important
+    init_list(&trav);
+    dfs(&g1, 1, &trav);
+    dfs(&g2, 1, &trav);
+    for (int i = 1; i <= g.vertices; ++i) {
+        if (g1.visited[i] == UNVISITED && g2.visited[i] == UNVISITED)
+            return 0;
+    }
+    return 1;
+} // O(n^2)
