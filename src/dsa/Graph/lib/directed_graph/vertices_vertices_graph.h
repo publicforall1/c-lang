@@ -32,5 +32,6 @@ void dfs_using_stack(Graph* g, int start_vertex, List* traversal);
 void bfs_using_queue(Graph* g, int start_vertex, List* traversal);
 Graph reverse_direction(Graph g); // for is_connected() // O(n^2)
 int is_connected(Graph g);        // O(Complexity(reverse_direction))
+int have_cycle(Graph g);            // O(Complexity(dfs))
 
 #endif

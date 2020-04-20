@@ -154,3 +154,31 @@ int is_connected(Graph g) {
     }
     return 1;
 } // O(n^2)
+
+int have_cycle(Graph g) {
+    int recursion_stack[g.vertices + 1];
+    Stack s;
+    makenull_stack(&s);
+    push_stack(1, &s);
+
+    while (!is_empty_stack(s)) {
+        int vertex = top_stack(s);
+        pop_stack(&s);
+
+        if (g.visited[vertex] == VISITED)
+            continue;
+
+        // Do anything you want with single node/vertex
+        g.visited[vertex] = VISITED;
+        recursion_stack[vertex] = 1;
+        List adjacents = get_adjacents(g, vertex);
+        for (int i = 1; i <= length(adjacents); ++i) {
+            int v = value_at(adjacents, i);
+            push_stack(v, &s);
+            if (recursion_stack[v] == 1) {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
