@@ -153,3 +153,51 @@ int have_cycle(Graph g) {
     }
     return 0;
 }
+
+int min(int a, int b) { return a < b ? a : b; }
+
+void dfs_for_Tarjan(Graph* g, int vertex, Stack* s, int on_stack[], int* k) {
+    if (g->visited[vertex] == VISITED)
+        return;
+
+    g->visited[vertex] = VISITED;
+    push_stack(vertex, s);
+    on_stack[vertex] = 1;
+    g->lowlink[vertex] = *k;
+    g->time[vertex] = *k;
+    *k = *k + 1;
+    List adjacents = get_adjacents(*g, vertex);
+    for (int i = 1; i <= length(adjacents); ++i) {
+        int v = value_at(adjacents, i);
+        if (on_stack[v] == 1) {
+            g->lowlink[vertex] = min(g->lowlink[v], g->lowlink[vertex]);
+            break;
+        }
+        dfs_for_Tarjan(g, v, s, on_stack, k);
+    }
+}
+
+int Tarjan_find_sccs(Graph g) {
+    // return: no. strongly connected components
+
+    int on_stack[g.vertices + 1];
+    int k = 1;
+    int count = 0;
+
+    for (int i = 1; i <= g.vertices; ++i) {
+        if (g.visited[i] == VISITED)
+            continue;
+
+        Stack s;
+        makenull_stack(&s);
+        for (int i = 1; i <= g.vertices; ++i)
+            on_stack[i] = 0;
+
+        dfs_for_Tarjan(&g, i, &s, on_stack, &k);
+
+        if (!is_empty_stack(s))
+            ++count;
+    }
+
+    return count;
+}

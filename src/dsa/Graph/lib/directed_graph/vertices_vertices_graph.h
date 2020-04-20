@@ -13,6 +13,10 @@ typedef struct Graph {
     int matrix[MAX_NUMBER_OF_VERTICES][MAX_NUMBER_OF_VERTICES];
     int vertices;
     int visited[MAX_NUMBER_OF_VERTICES];
+    int lowlink[MAX_NUMBER_OF_VERTICES]; // low-link value (contact taiprogramer
+                                         // if you don't understand)
+    int time[MAX_NUMBER_OF_VERTICES]; // 1, 2, 3, 4, 5, ... order of vertex when
+                                      // dfs
 } Graph;
 
 // Classic
@@ -31,5 +35,6 @@ void dfs(Graph* g, int vertex, List* traversal);
 void dfs_using_stack(Graph* g, int start_vertex, List* traversal);
 void bfs_using_queue(Graph* g, int start_vertex, List* traversal);
 int have_cycle(Graph g); // O(Complexity(dfs))
+int Tarjan_find_sccs(Graph g);
 
 #endif
