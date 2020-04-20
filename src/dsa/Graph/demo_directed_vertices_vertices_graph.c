@@ -14,7 +14,6 @@ void test_get_adjacents(Graph g);
 void test_dfs(Graph g);
 void test_dfs_using_stack(Graph g);
 void test_bfs_using_queue(Graph g);
-void test_is_connected(Graph g);
 
 int main(void) {
     printf(
@@ -26,7 +25,6 @@ int main(void) {
     test_dfs(g);
     test_dfs_using_stack(g);
     test_bfs_using_queue(g);
-    test_is_connected(g);
     printf("-> Everything works great! Thanks to taiprogramer!\n\n");
     return 0;
 }
@@ -158,5 +156,3 @@ void test_bfs_using_queue(Graph g) {
     test_bfs_using_queue_run_test(g, 4, dfs_4);
     test_bfs_using_queue_run_test(g, 5, dfs_5);
 }
-
-void test_is_connected(Graph g) { assert(is_connected(g) == 1); }
