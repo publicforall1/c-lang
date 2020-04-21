@@ -4,6 +4,7 @@
 #define MAX_NUMBER_OF_VERTICES 100
 #define VISITED 1
 #define UNVISITED 0
+#define INFINITY 999
 
 #include "../list/list.h"
 #include "../queue/circular_queue.h"
@@ -17,6 +18,9 @@ typedef struct Graph {
                                          // if you don't understand)
     int time[MAX_NUMBER_OF_VERTICES]; // 1, 2, 3, 4, 5, ... order of vertex when
                                       // dfs
+    int distance[MAX_NUMBER_OF_VERTICES]; // for Dijkstra shortest-path
+                                          // algorithm
+    int weight[MAX_NUMBER_OF_VERTICES][MAX_NUMBER_OF_VERTICES];
 } Graph;
 
 // Classic
@@ -36,5 +40,7 @@ void dfs_using_stack(Graph* g, int start_vertex, List* traversal);
 void bfs_using_queue(Graph* g, int start_vertex, List* traversal);
 int have_cycle(Graph g); // O(Complexity(dfs))
 int Tarjan_find_sccs(Graph g);
+void add_weight(Graph* g, int x, int y, int weight);
+void Dijkstra_find_and_set_distance(Graph* g, int source_vertex);
 
 #endif
