@@ -165,3 +165,55 @@ int have_cycle(Graph g) {
     }
     return 0;
 }
+
+int min(int a, int b) { return a < b ? a : b; }
+
+void add_weight(Graph* g, int x, int y, int weight) {
+    g->weight[x][y] = weight;
+}
+
+void Dijkstra_find_and_set_distance(Graph* g, int source_vertex) {
+    int size = g->vertices + 1;
+    int marked[size];
+    int num_mark = 0;
+    for (int i = 1; i <= g->vertices; ++i)
+        g->distance[i] = INFINITY;
+
+    for (int i = 1; i <= g->vertices; ++i)
+        marked[i] = 0;
+
+    g->distance[source_vertex] = 0;
+    marked[source_vertex] = 1;
+    ++num_mark;
+    List neighbor = get_adjacents(*g, source_vertex);
+    for (int i = 1; i <= length(neighbor); ++i) {
+        int v = value_at(neighbor, i);
+        g->distance[v] = g->weight[source_vertex][v];
+    }
+
+    while (num_mark < g->vertices) {
+        // find min weight of unmark node
+        int w = INFINITY;
+        int new_source_vertex;
+        for (int i = 1; i <= g->vertices; ++i) {
+            if (marked[i])
+                continue;
+
+            if (g->distance[i] < w) {
+                w = g->distance[i];
+                new_source_vertex = i;
+            }
+        }
+        // mark new_source_vertex as marked
+        marked[new_source_vertex] = 1;
+        List neighbor = get_adjacents(*g, new_source_vertex);
+        for (int i = 1; i <= length(neighbor); ++i) {
+            int v = value_at(neighbor, i);
+            int min_value =
+                min(g->distance[v], g->weight[new_source_vertex][v] +
+                                        g->distance[new_source_vertex]);
+            g->distance[v] = min_value;
+        }
+        ++num_mark;
+    }
+}

@@ -5,6 +5,7 @@
 #define MAX_NUMBER_OF_EDGES 400
 #define UNVISITED 0
 #define VISITED 1
+#define INFINITY 999
 
 #include "../list/list.h"
 #include "../queue/circular_queue.h"
@@ -15,7 +16,10 @@ typedef struct Graph {
     int vertices;
     int edges;
     int visited[MAX_NUMBER_OF_VERTICES];
-    int parent[MAX_NUMBER_OF_VERTICES]; // for have_cycle()
+    int parent[MAX_NUMBER_OF_VERTICES];   // for have_cycle()
+    int distance[MAX_NUMBER_OF_VERTICES]; // for Dijkstra shortest-path
+                                          // algorithm
+    int weight[MAX_NUMBER_OF_VERTICES][MAX_NUMBER_OF_VERTICES];
 } Graph;
 
 // Classic
@@ -34,5 +38,7 @@ void bfs_using_queue(Graph* g, int start_vertex, List* traversal);
 int is_connected(Graph g);          // O(Complexity(dfs))
 void find_and_set_parent(Graph* g); // for have_cycle
 int have_cycle(Graph g);            // O(Complexity(dfs))
+void add_weight(Graph* g, int x, int y, int weight);
+void Dijkstra_find_and_set_distance(Graph* g, int source_vertex);
 
 #endif
