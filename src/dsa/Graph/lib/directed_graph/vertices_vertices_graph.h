@@ -42,5 +42,6 @@ int have_cycle(Graph g); // O(Complexity(dfs))
 int Tarjan_find_sccs(Graph g);
 void add_weight(Graph* g, int x, int y, int weight);
 void Dijkstra_find_and_set_distance(Graph* g, int source_vertex);
+int have_negative_cycle(Graph g);
 
 #endif

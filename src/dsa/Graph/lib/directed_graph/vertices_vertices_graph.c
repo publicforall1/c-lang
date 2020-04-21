@@ -204,6 +204,7 @@ int Tarjan_find_sccs(Graph g) {
 
 void add_weight(Graph* g, int x, int y, int weight) {
     g->weight[x][y] = weight;
+    g->weight[y][x] = weight;
 }
 
 void Dijkstra_find_and_set_distance(Graph* g, int source_vertex) {
@@ -250,4 +251,35 @@ void Dijkstra_find_and_set_distance(Graph* g, int source_vertex) {
         }
         ++num_mark;
     }
+}
+
+int have_negative_cycle(Graph g) {
+    int on_stack[g.vertices + 1];
+    int k = 1;
+
+    for (int i = 1; i <= g.vertices; ++i) {
+        if (g.visited[i] == VISITED)
+            continue;
+
+        Stack s;
+        makenull_stack(&s);
+        for (int i = 1; i <= g.vertices; ++i)
+            on_stack[i] = 0;
+
+        int w = 0;
+        dfs_for_Tarjan(&g, i, &s, on_stack, &k);
+        while (!is_empty_stack(s)) {
+            int x = top_stack(s);
+            pop_stack(&s);
+            if (is_empty_stack(s))
+                continue;
+
+            int y = top_stack(s);
+            pop_stack(&s);
+            w += g.weight[x][y];
+        }
+        if (w < 0)
+            return 1;
+    }
+    return 0;
 }
