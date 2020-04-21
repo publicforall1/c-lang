@@ -170,6 +170,7 @@ int min(int a, int b) { return a < b ? a : b; }
 
 void add_weight(Graph* g, int x, int y, int weight) {
     g->weight[x][y] = weight;
+    g->weight[y][x] = weight;
 }
 
 void Dijkstra_find_and_set_distance(Graph* g, int source_vertex) {
