@@ -4,8 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <limits.h>
 
-#define MAX_TEST_ELEMENT 10000
+#define MAX_TEST_ELEMENT 1000
 
 void testMaxHeap();
 void testMinHeap();
@@ -24,23 +25,16 @@ void testMaxHeap() {
     for (int i = 0; i < MAX_TEST_ELEMENT; ++i) {
         Key k;
         k.x = rand();
-        printf("insert element %d/%d...\n", i + 1, MAX_TEST_ELEMENT);
         insert_max_heap(&max_heap, k);
     }
 
-    int i = 0;
-    int max_value;
-    if (!is_empty_heap(max_heap)) {
-        max_value = extract_max(&max_heap).x;
-        printf("test extract max %d/%d...\n", ++i, MAX_TEST_ELEMENT);
+    int min_value = INT_MAX;
+    while (!is_empty_heap(max_heap)) {
+        Key k = extract_max(&max_heap);
+        assert(k.x <= min_value);
+        min_value = k.x;
     }
 
-    while (!is_empty_heap(max_heap)) {
-        printf("test extract max %d/%d...\n", ++i, MAX_TEST_ELEMENT);
-        Key k = extract_max(&max_heap);
-        assert(k.x <= max_value);
-        max_value = k.x;
-    }
 }
 
 void testMinHeap() {
@@ -51,22 +45,13 @@ void testMinHeap() {
     for (int i = 0; i < MAX_TEST_ELEMENT; ++i) {
         Key k;
         k.x = rand();
-        printf("insert element %d/%d...\n", i + 1, MAX_TEST_ELEMENT);
         insert_min_heap(&min_heap, k);
     }
 
-    int i = 0;
-    int min_value;
-    if (!is_empty_heap(min_heap)) {
-        min_value = extract_min(&min_heap).x;
-        printf("test extract min %d/%d...\n", ++i, MAX_TEST_ELEMENT);
-    }
-
+    int max_value = INT_MIN;
     while (!is_empty_heap(min_heap)) {
-        printf("test extract min %d/%d...\n", ++i, MAX_TEST_ELEMENT);
         Key k = extract_min(&min_heap);
-        assert(k.x >= min_value);
-        min_value = k.x;
+        assert(k.x >= max_value);
+        max_value = k.x;
     }
 }
-

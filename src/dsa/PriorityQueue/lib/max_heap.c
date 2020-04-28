@@ -2,10 +2,15 @@
 #include <stdio.h>
 
 void max_heapify(P_Queue* q, Node n) {
+
+    if (!is_valid_node(*q, n))
+        return;
+
+    Node node_with_largest_key = n;
     Node l = left_child(*q, n);
     Node r = right_child(*q, n);
 
-    Node node_with_largest_key = n;
+
 
     if (is_valid_node(*q, l))
         node_with_largest_key = l;
@@ -25,23 +30,23 @@ void max_heapify(P_Queue* q, Node n) {
 
 Key extract_max(P_Queue* q) {
     Key k = q->keys[0];
-    Node last_node = q->length - 1;
+    Node last_node = q->index;
     q->keys[0] = q->keys[last_node];
-    q->length = q->length - 1;
+    q->index--;
     max_heapify(q, 0); // O(log n)
     return k;
 }
 
 void build_max_heap(P_Queue* q) {
-    for (int i = q->length / 2 - 1; i >= 0; --i) {
+    for (int i = q->index / 2 - 1; i >= 0; --i) {
         max_heapify(q, i);
     }
 }
 
 void insert_max_heap(P_Queue* q, Key k) {
-    q->keys[q->length] = k;
-    Node n = q->length;
-    q->length++;
+    q->index++;
+    q->keys[q->index] = k;
+    Node n = q->index;
 
     while (n > 0) {
         Node p = parent(*q, n);
@@ -57,7 +62,7 @@ void insert_max_heap(P_Queue* q, Key k) {
 
 void print_max_heap_sort(P_Queue q) {
     printf("Sorted list: [ ");
-    while (q.length != 0) {
+    while (!is_empty_heap(q)) {
         Key k = extract_max(&q);
         printf("%d ", k.x);
     }

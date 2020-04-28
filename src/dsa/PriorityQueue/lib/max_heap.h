@@ -4,12 +4,6 @@
 
 typedef P_Queue MaxHeap;
 
-void init_heap(P_Queue* q);              // O(1)
-int is_empty_heap(P_Queue q);                 // O(1)
-Node left_child(P_Queue q, Node n);      // O(1)
-Node right_child(P_Queue q, Node n);     // O(1)
-Node parent(P_Queue q, Node n);          // O(1)
-int is_valid_node(P_Queue q, Node n);    // O(1)
 void max_heapify(P_Queue* q, Node n);    // O(log n)
 Key extract_max(P_Queue* q);             // O(log n)
 void build_max_heap(P_Queue* q);         // O(n log n)

@@ -10,7 +10,7 @@ typedef struct {
 
 typedef struct {
     Key keys[MAX_NUMBER_OF_NODES];
-    int length;
+    int index;
 } P_Queue;
 
 typedef int Node;
