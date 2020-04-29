@@ -1,10 +1,10 @@
 #include "lib/max_heap.h"
 #include "lib/min_heap.h"
 #include <assert.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <limits.h>
 
 #define MAX_TEST_ELEMENT 1000
 
@@ -24,17 +24,17 @@ void testMaxHeap() {
 
     for (int i = 0; i < MAX_TEST_ELEMENT; ++i) {
         Key k;
-        k.x = rand();
+        k.item = rand();
+        k.priority = k.item;
         insert_max_heap(&max_heap, k);
     }
 
     int min_value = INT_MAX;
     while (!is_empty_heap(max_heap)) {
         Key k = extract_max(&max_heap);
-        assert(k.x <= min_value);
-        min_value = k.x;
+        assert(k.item <= min_value);
+        min_value = k.item;
     }
-
 }
 
 void testMinHeap() {
@@ -44,14 +44,15 @@ void testMinHeap() {
 
     for (int i = 0; i < MAX_TEST_ELEMENT; ++i) {
         Key k;
-        k.x = rand();
+        k.item = rand() % 10;
+        k.priority = k.item;
         insert_min_heap(&min_heap, k);
     }
 
     int max_value = INT_MIN;
     while (!is_empty_heap(min_heap)) {
         Key k = extract_min(&min_heap);
-        assert(k.x >= max_value);
-        max_value = k.x;
+        assert(k.item >= max_value);
+        max_value = k.item;
     }
 }

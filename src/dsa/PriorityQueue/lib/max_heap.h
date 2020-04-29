@@ -4,7 +4,7 @@
 
 typedef P_Queue MaxHeap;
 
-void max_heapify(P_Queue* q, Node n);    // O(log n)
+void max_heapify(P_Queue* q, Node i);    // O(log n)
 Key extract_max(P_Queue* q);             // O(log n)
 void build_max_heap(P_Queue* q);         // O(n log n)
 void insert_max_heap(P_Queue* q, Key k); // O(log n)

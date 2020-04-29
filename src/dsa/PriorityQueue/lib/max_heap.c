@@ -1,62 +1,47 @@
 #include "max_heap.h"
 #include <stdio.h>
 
-void max_heapify(P_Queue* q, Node n) {
+void max_heapify(P_Queue* q, Node i) {
+    Node l = left_child(*q, i);
+    Node r = right_child(*q, i);
+    Node largest = i;
 
-    if (!is_valid_node(*q, n))
-        return;
-
-    Node node_with_largest_key = n;
-    Node l = left_child(*q, n);
-    Node r = right_child(*q, n);
-
-
-
-    if (is_valid_node(*q, l))
-        node_with_largest_key = l;
-
-    if (is_valid_node(*q, r)) {
-        if (q->keys[r].x > q->keys[node_with_largest_key].x)
-            node_with_largest_key = r;
-    }
-
-    if (q->keys[n].x < q->keys[node_with_largest_key].x) {
-        Key temp = q->keys[n];
-        q->keys[n] = q->keys[node_with_largest_key];
-        q->keys[node_with_largest_key] = temp;
-        max_heapify(q, node_with_largest_key);
+    if (l < q->size && q->keys[l].priority > q->keys[i].priority)
+        largest = l;
+    if (r < q->size && q->keys[r].priority > q->keys[largest].priority)
+        largest = r;
+    if (largest != i) {
+        Key temp = q->keys[i];
+        q->keys[i] = q->keys[largest];
+        q->keys[largest] = temp;
+        max_heapify(q, largest);
     }
 }
 
 Key extract_max(P_Queue* q) {
     Key k = q->keys[0];
-    Node last_node = q->index;
-    q->keys[0] = q->keys[last_node];
-    q->index--;
-    max_heapify(q, 0); // O(log n)
+    q->keys[0] = q->keys[q->size - 1];
+    --(q->size);
+    max_heapify(q, 0);
     return k;
 }
 
 void build_max_heap(P_Queue* q) {
-    for (int i = q->index / 2 - 1; i >= 0; --i) {
+    for (int i = q->size / 2 - 1; i >= 0; --i)
         max_heapify(q, i);
-    }
 }
 
 void insert_max_heap(P_Queue* q, Key k) {
-    q->index++;
-    q->keys[q->index] = k;
-    Node n = q->index;
+    q->keys[q->size++] = k;
+    Node i = q->size - 1;
 
-    while (n > 0) {
-        Node p = parent(*q, n);
-        if (q->keys[n].x <= q->keys[p].x)
-            break;
-
-        Key temp = q->keys[n];
-        q->keys[n] = q->keys[p];
+    Node p = parent(*q, i);
+    while (i != 0 && q->keys[p].priority < q->keys[i].priority) {
+        Key temp = q->keys[i];
+        q->keys[i] = q->keys[p];
         q->keys[p] = temp;
-        n = p;
+        i = p;
+        p = parent(*q, i);
     }
 }
 
@@ -64,7 +49,7 @@ void print_max_heap_sort(P_Queue q) {
     printf("Sorted list: [ ");
     while (!is_empty_heap(q)) {
         Key k = extract_max(&q);
-        printf("%d ", k.x);
+        printf("%d ", k.item);
     }
     printf("]\n");
 } // O(n log n)
