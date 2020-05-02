@@ -41,6 +41,7 @@
 
 ## # Greedy
 - [Kruskal's algorithm :: Minimum spanning tree](./src/greedy/Kruskal_minimum_spanning_tree.c)
+- [Withdraw money](./src/greedy/atm.c)
 
 ### References
 - [Online graph editor](https://csacademy.com/app/graph_editor/)
