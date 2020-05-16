@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 /* Unimportant things, you can ignore it. */
-#define CAN_T_DO_ANYTHING "We can't don anything.\n"
+#define CAN_T_DO_ANYTHING "We can't do anything.\n"
 #define STILL_EXIT_WITH_SUCCESS_CODE "Program is still exit with 0 code.\n"
 #define OUT_OF_MEMORY "Because OUT OF MEMORY\n"
 #define CAN_NOT_OPEN_FILE "Because CAN NOT OPEN FILE\n"
