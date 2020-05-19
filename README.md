@@ -39,6 +39,7 @@
 - [Merge sort](./src/divide_and_conquer/merge_sort.c)
 - [Quick sort](./src/divide_and_conquer/quick_sort.c)
 - [Maximum Sub Array](./src/divide_and_conquer/maximum_sub_array.c)
+- [Modular Exponentiation](./src/divide_and_conquer/modular_exponentiation.c)
 
 ## # Greedy
 - [Kruskal's algorithm :: Minimum spanning tree](./src/greedy/Kruskal_minimum_spanning_tree.c)

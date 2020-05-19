@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Programs list
-programs=(quick_sort merge_sort maximum_sub_array)
+programs=(quick_sort merge_sort maximum_sub_array modular_exponentiation)
 
 # Compile all files
 echo "> Compiling things..."
