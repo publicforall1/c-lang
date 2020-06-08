@@ -1,25 +1,16 @@
 #!/bin/bash
 
-# Programs list
-programs=(Bellman_Ford_The_Shortest_Path fib)
-
-# Compile all files
-echo "> Compiling things..."
-for program in "${programs[@]}"; do
-    echo -e "\tCompile $program..."
+# [get all program files (.c files)]
+for program_file in *.c
+do
+    program=`basename ${program_file} .c`
+    echo -n "[$program]"
     make prog=$program
-done
-
-# Run internal tests
-echo "> Testing things..."
-for program in "${programs[@]}"; do
-    echo -e "\tExecuting $program..."
     ./$program.out
+    rm -rf $program.out
+    echo " -> success."
 done
 
-# Clean stuff
-echo "> Cleaning things..."
-rm -rf *.out
-
+echo "[done]"
 echo "> So fast, right?"
 echo "> It's a magic of algorithms."
