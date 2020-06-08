@@ -48,6 +48,7 @@
 
 ## # Dynamic Programming
 - [Bellman - Ford: The Shortest Path](./src/dynamic_programming/Bellman_Ford_The_Shortest_Path.c)
+- [Fibonacci](./src/dynamic_programming/fib.c)
 
 ### References
 - [Online graph editor](https://csacademy.com/app/graph_editor/)

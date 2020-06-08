@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Programs list
-programs=(Bellman_Ford_The_Shortest_Path)
+programs=(Bellman_Ford_The_Shortest_Path fib)
 
 # Compile all files
 echo "> Compiling things..."
