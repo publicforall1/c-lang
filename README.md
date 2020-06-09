@@ -50,6 +50,7 @@
 - [Bellman - Ford: The Shortest Path](./src/dynamic_programming/Bellman_Ford_The_Shortest_Path.c)
 - [Fibonacci](./src/dynamic_programming/fib.c)
 - [Count even num in string](./src/dynamic_programming/count_even_num_in_string.c)
+- [Maximum Sub Array](./src/dynamic_programming/maximum_sub_array.c)
 
 ### References
 - [Online graph editor](https://csacademy.com/app/graph_editor/)
